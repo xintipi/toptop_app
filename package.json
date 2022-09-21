@@ -1,8 +1,12 @@
 {
   "name": "toptop_app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "A React js project",
+  "author": {
+    "name": "Nguyen Huu Trung",
+    "email": "huutrung.mmt@gmail.com"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build:development": "tsc && vite build --mode development",
