@@ -1,0 +1,61 @@
+{
+  "name": "toptop_app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:development": "tsc && vite build --mode development",
+    "build:staging": "tsc && vite build --mode staging",
+    "build:production": "tsc && vite build",
+    "preview": "vite preview",
+    "lint:fix": "eslint --fix --cache --max-warnings 0 ./src --ext .jsx,.js,.ts,.tsx",
+    "prettier": "prettier --check --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,json}\"",
+    "format": "npm run prettier && npm run lint:fix",
+    "postinstall": "husky install",
+    "pre-commit": "npm run format"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.3",
+    "axios": "^0.27.2",
+    "dayjs": "^1.11.4",
+    "js-cookie": "^3.0.1",
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@types/js-cookie": "^3.0.2",
+    "@types/lodash-es": "^4.17.6",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "@vitejs/plugin-react": "^2.0.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^8.0.1",
+    "less": "^4.1.3",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "engines": {
+    "node": ">=12.2.0"
+  }
+}
