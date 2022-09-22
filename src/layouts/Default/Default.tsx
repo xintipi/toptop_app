@@ -1,16 +1,28 @@
-import React from 'react';
+import classNames from 'classnames/bind';
+import React, { Fragment } from 'react';
 
 import { Header, Sidebar } from '@/layouts';
 
+import styles from './Default.module.scss';
+
+const cx = classNames.bind(styles);
+
 function Default({ children }: any) {
   return (
-    <div>
+    <Fragment>
       <Header />
-      <div className="container">
+      <div className={`container ${cx('body-container')}`}>
         <Sidebar />
-        <div className="content">{children}</div>
+        <div className={cx('main-container')}>
+          <div>{children}</div>
+          <div className={cx('bottom')}>
+            <div className={cx('promotion')}>
+              <button>Get app</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 }
 

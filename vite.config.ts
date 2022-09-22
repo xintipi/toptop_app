@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import svgr from '@honkhonk/vite-plugin-svgr';
 import dayjs from 'dayjs';
 // @ts-ignore
 import pkg from './package.json';
@@ -60,5 +61,5 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [react()],
+  plugins: [svgr(), react()],
 });
