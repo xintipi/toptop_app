@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import dayjs from 'dayjs';
 // @ts-ignore
 import pkg from './package.json';
-// @ts-ignore
 import * as path from 'path';
 
 const { dependencies, devDependencies, name, version, author } = pkg;
@@ -16,12 +15,7 @@ const __APP_INFO__ = {
 export default defineConfig({
   base: '/',
   resolve: {
-    alias: [
-      {
-        find: '@',
-        replacement: path.resolve(__dirname, 'src'),
-      },
-    ],
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
   server: {
     host: true,

@@ -1,10 +1,10 @@
 <div align="center">
-<h1>React admin</h1>
+<h1>ReactJs</h1>
 </div>
 
 ## Introduction
 
-React Admin is a free and open source middle and back-end template. Using the latest `React`, `Vite`, `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+React is a free and open source middle and back-end template. Using the latest `React`, `Vite`, `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
 
 ## Preparation
 
@@ -13,7 +13,6 @@ React Admin is a free and open source middle and back-end template. Using the la
 - [ReactJs](https://reactjs.org/) - Familiar with react basic syntax
 - [TypeScript](https://www.typescriptlang.org/) - Familiar with the basic syntax of `TypeScript`
 - [Es6+](https://www.javascripttutorial.net/es6/) - Familiar with es6 basic syntax
-- [Ant-Design-react](https://ant.design/docs/react/introduce/) - ui basic use
 
 ## Install and use
 

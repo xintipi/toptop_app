@@ -1,31 +1,39 @@
-import './App.css';
+import './App.scss';
 
-import { useState } from 'react';
+import React, { Fragment } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
-import reactLogo from './assets/react.svg';
+import { publicRoutes, Record } from '@/routes';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { pathname } = useLocation();
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
+    <Routes>
+      {publicRoutes.map((route: Record, index: number) => {
+        const Layout = route.layout as React.ElementType;
+        const Page = route.component as React.ElementType;
+        return (
+          <Route
+            key={index}
+            path={route.path}
+            element={
+              route.path === '*' ? (
+                <Navigate to={`/404?fromUrl=${pathname}`} replace />
+              ) : route.layout ? (
+                <Layout>
+                  <Page />
+                </Layout>
+              ) : (
+                <Fragment>
+                  <Page />
+                </Fragment>
+              )
+            }
+          />
+        );
+      })}
+    </Routes>
   );
 }
 
