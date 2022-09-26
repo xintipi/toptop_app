@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { To, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Icon = ({
@@ -11,12 +11,21 @@ const Icon = ({
   children: any;
 }) => {
   const navigate = useNavigate();
+
+  const switchPage = (path: To) => {
+    if (path !== '/logout') return navigate(path);
+    // call api logout in here
+    console.log('User was signed out!!!');
+    // and then navigate to home page
+    return navigate('/');
+  };
+
   return path ? (
-    <a onClick={() => (path ? navigate(path) : false)}>
-      <span className={className}>{children}</span>
+    <a className={className} onClick={() => switchPage(path)}>
+      {children}
     </a>
   ) : (
-    <span className={className}>{children}</span>
+    <div className={className}>{children}</div>
   );
 };
 
@@ -36,4 +45,27 @@ const StyledInboxIcon = styled(Icon)`
   }
 `;
 
-export { StyledIcon, StyledInboxIcon };
+const StyledArrowIcon = styled(Icon)`
+  & svg {
+    display: block;
+    width: 24px;
+    height: 8px;
+    position: absolute;
+    top: -8px;
+    right: 15px;
+  }
+`;
+
+const StyleIconPopup = styled(Icon)`
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  & svg {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export { StyledArrowIcon, StyledIcon, StyledInboxIcon, StyleIconPopup };

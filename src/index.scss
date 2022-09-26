@@ -1,4 +1,9 @@
 :root {
+  --primaryColor: 22, 24, 35;
+  --primaryBackground: 255, 255, 255;
+  --transparent: transparent;
+  --fontFamilyHeading: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+  --fontFamilyParagraph: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
 }
 
 * {
@@ -9,10 +14,10 @@
 
 body {
   margin: 0;
-  font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+  font-family: var(--fontFamilyParagraph);
   font-size: 14px;
-  color: rgba(22, 24, 35, 1);
-  background-color: rgba(255, 255, 255, 1);
+  color: var(--primaryColor);
+  background-color: var(--primaryBackground);
   overscroll-behavior: contain;
   direction: ltr;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +26,7 @@ body {
   line-height: 1.5;
 
   a {
-    color: rgba(22, 24, 35, 1);
+    color: var(--primaryColor);
     -webkit-transition: color 250ms;
     transition: color 250ms;
     text-decoration: none;

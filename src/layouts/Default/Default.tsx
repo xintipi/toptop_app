@@ -15,11 +15,6 @@ function Default({ children }: any) {
         <Sidebar />
         <div className={cx('main-container')}>
           <div>{children}</div>
-          <div className={cx('bottom')}>
-            <div className={cx('promotion')}>
-              <button>Get app</button>
-            </div>
-          </div>
         </div>
       </div>
     </Fragment>
