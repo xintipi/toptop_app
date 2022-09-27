@@ -28,6 +28,8 @@
     }
 
     .header-center {
+      position: relative;
+      max-width: 361px;
       .search-input {
         display: flex;
         flex-direction: row;
@@ -39,7 +41,7 @@
         overflow: hidden;
         z-index: 1;
         margin: 0;
-        max-width: 361px;
+        width: 100%;
 
         &:focus-within {
           border: 1.5px solid rgba(var(--primaryColor), 0.2);

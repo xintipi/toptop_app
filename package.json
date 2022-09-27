@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
+    "@tippyjs/react": "^4.2.6",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.5",

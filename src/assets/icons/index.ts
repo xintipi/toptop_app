@@ -8,3 +8,4 @@ export { default as ProFileIcon } from './profile.svg?component';
 export { default as SearchButtonIcon } from './search-button.svg?component';
 export { default as SettingIcon } from './setting.svg?component';
 export { default as UploadIcon } from './upload.svg?component';
+export { default as VerifyBadgeIcon } from './verify_badge.svg?component';
