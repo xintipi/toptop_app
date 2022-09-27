@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 
-const Avatar = ({
-  className,
-  width,
-  height,
-  src,
-  alt,
-}: {
+interface AvatarRecord {
   className?: string;
   width?: string;
   height?: string;
   src: string;
   alt: string;
-}) => {
+}
+
+const Avatar = ({ className, width, height, src, alt }: AvatarRecord) => {
   return (
     <span className={className} style={{ width, height }}>
       <img src={src} alt={alt} loading="lazy" />

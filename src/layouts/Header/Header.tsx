@@ -1,12 +1,13 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
   ArrowIcon,
   ClearIcon,
   InboxIcon,
+  LanguageIcon,
   LogoTiktok,
   LogoutIcon,
   MessageIcon,
@@ -17,17 +18,18 @@ import {
   VerifyBadgeIcon,
 } from '@/assets/icons';
 import bgUser from '@/assets/user.jpeg';
-import { StyledAvatar } from '@/components/Avatar/StyledAvatar';
+import { StyledAvatar } from '@/components/Styled/StyledAvatar';
+import { IListItems, StyledLanguage } from '@/components/Styled/StyledLanguage';
+import {
+  StyledPopperProfile,
+  StyledPopperSearch,
+} from '@/components/Styled/StyledPopper';
 import {
   StyledArrowIcon,
   StyledIcon,
   StyledInboxIcon,
   StyleIconPopup,
-} from '@/components/Icon/StyleIcon';
-import {
-  StyledPopperProfile,
-  StyledPopperSearch,
-} from '@/components/Popper/StyledPopper';
+} from '@/components/Styled/StyleIcon';
 import searchData from '@/dummy/search.json';
 
 import styles from './Header.module.scss';
@@ -35,12 +37,25 @@ import styles from './Header.module.scss';
 const cx = classNames.bind(styles);
 
 function Header() {
+  const navigate = useNavigate();
+
   const [searchInput, setSearchInput] = useState<string>('');
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [showPopperProfile, setShowPopperProfile] = useState<boolean>(false);
   const [searchResult, setSearchResult] = useState<any>([1, 2, 3]);
+  const [showLang, setShowLang] = useState<boolean>(false);
 
-  const navigate = useNavigate();
+  const listLanguages = useMemo<IListItems[]>(() => {
+    return [
+      { id: 1, name: 'English' },
+      { id: 2, name: 'Tiếng Việt (Việt Nam)' },
+    ];
+  }, []);
+
+  const handleClickOut = () => {
+    setShowPopperProfile(false);
+    setShowLang(false);
+  };
 
   const handleSearch = (evt: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(evt.target.value);
@@ -50,8 +65,6 @@ function Header() {
     setSearchInput('');
     inputRef.current?.focus();
   };
-
-  console.log(searchData);
 
   return (
     <header className={cx('header', 'fixed-top')}>
@@ -142,32 +155,48 @@ function Header() {
           <Tippy
             visible={showPopperProfile}
             interactive={true}
-            onClickOutside={() => setShowPopperProfile(false)}
+            onClickOutside={() => handleClickOut()}
             render={(attrs) => (
               <StyledPopperProfile tabIndex={-1} {...attrs}>
                 <StyledArrowIcon>
                   <ArrowIcon />
                 </StyledArrowIcon>
-                <ul>
-                  <li>
-                    <StyleIconPopup path="/@tough95">
-                      <ProFileIcon />
-                      <span>View profile</span>
-                    </StyleIconPopup>
-                  </li>
-                  <li>
-                    <StyleIconPopup path="/setting">
-                      <SettingIcon />
-                      <span>Setting</span>
-                    </StyleIconPopup>
-                  </li>
-                  <li className="logout-entrance">
-                    <StyleIconPopup path="/logout">
-                      <LogoutIcon />
-                      <span>Log out</span>
-                    </StyleIconPopup>
-                  </li>
-                </ul>
+
+                {!showLang ? (
+                  <ul>
+                    <li>
+                      <StyleIconPopup path="/@tough95">
+                        <ProFileIcon />
+                        <span>View profile</span>
+                      </StyleIconPopup>
+                    </li>
+                    <li>
+                      <StyleIconPopup path="/setting">
+                        <SettingIcon />
+                        <span>Setting</span>
+                      </StyleIconPopup>
+                    </li>
+                    <li role="presentation" onClick={() => setShowLang(true)}>
+                      <StyleIconPopup>
+                        <LanguageIcon />
+                        <span>English</span>
+                      </StyleIconPopup>
+                    </li>
+                    <li className="logout-entrance">
+                      <StyleIconPopup path="/logout">
+                        <LogoutIcon />
+                        <span>Log out</span>
+                      </StyleIconPopup>
+                    </li>
+                  </ul>
+                ) : (
+                  <StyledLanguage
+                    title="Language"
+                    lists={listLanguages}
+                    open={showLang}
+                    onBack={(payload: boolean) => setShowLang(payload)}
+                  />
+                )}
               </StyledPopperProfile>
             )}
           >

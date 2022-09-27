@@ -1,7 +1,9 @@
 export { default as LogoTiktok } from '../tiktok.svg?component';
 export { default as ArrowIcon } from './arrow.svg?component';
+export { default as BackIcon } from './back-arrow.svg?component';
 export { default as ClearIcon } from './clear.svg?component';
 export { default as InboxIcon } from './inbox.svg?component';
+export { default as LanguageIcon } from './language.svg?component';
 export { default as LogoutIcon } from './logout.svg?component';
 export { default as MessageIcon } from './message.svg?component';
 export { default as ProFileIcon } from './profile.svg?component';
