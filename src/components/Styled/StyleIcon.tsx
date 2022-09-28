@@ -1,3 +1,4 @@
+import React from 'react';
 import { To, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,7 +9,7 @@ const Icon = ({
 }: {
   className?: string;
   path?: string;
-  children: any;
+  children: React.ReactNode;
 }) => {
   const navigate = useNavigate();
 

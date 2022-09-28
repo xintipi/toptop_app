@@ -14,7 +14,7 @@ import {
 
 export interface Record {
   path: string;
-  layout?: ({ children }: any) => React.ReactElement;
+  layout?: ({ children }: { children: React.ReactNode }) => React.ReactElement;
   component?: () => React.ReactElement;
 }
 

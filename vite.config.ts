@@ -1,3 +1,6 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from '@honkhonk/vite-plugin-svgr';
@@ -36,9 +39,7 @@ export default defineConfig({
     outDir: 'dist',
     chunkSizeWarningLimit: 2000,
   },
-  define: {
-    __APP_INFO__: JSON.stringify(__APP_INFO__),
-  },
+  define: { __APP_INFO__: JSON.stringify(__APP_INFO__) },
   css: {
     preprocessorOptions: {
       less: {
@@ -52,9 +53,7 @@ export default defineConfig({
           postcssPlugin: 'internal:charset-removal',
           AtRule: {
             charset: (atRule) => {
-              if (atRule.name === 'charset') {
-                atRule.remove();
-              }
+              if (atRule.name === 'charset') atRule.remove();
             },
           },
         },
@@ -62,4 +61,11 @@ export default defineConfig({
     },
   },
   plugins: [svgr(), react()],
+  test: {
+    include: ['src/**/*.{test,spec}.{jsx,tsx}'],
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/tests/setup.test.ts',
+    css: true,
+  },
 });

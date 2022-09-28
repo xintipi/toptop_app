@@ -119,7 +119,7 @@ function Header() {
               </StyledPopperSearch>
             )}
           >
-            <form className={cx('search-input')}>
+            <form data-form="search" className={cx('search-input')}>
               <input
                 type="text"
                 value={searchInput}
@@ -130,7 +130,11 @@ function Header() {
                 }
               />
               {searchInput && (
-                <div className={cx('icon-clear')} onClick={() => handleClear()}>
+                <div
+                  data-clean="clean"
+                  className={cx('icon-clear')}
+                  onClick={() => handleClear()}
+                >
                   <ClearIcon />
                 </div>
               )}
@@ -163,7 +167,7 @@ function Header() {
             interactive={true}
             onClickOutside={() => handleClickOut()}
             render={(attrs) => (
-              <StyledPopperProfile tabIndex={-1} {...attrs}>
+              <StyledPopperProfile tabIndex={-1} {...attrs} data-tippy="profile">
                 <StyledArrowIcon>
                   <ArrowIcon />
                 </StyledArrowIcon>

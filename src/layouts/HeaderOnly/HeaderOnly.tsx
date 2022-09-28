@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 import { Header } from '@/layouts';
 
-function HeaderOnly({ children }: any) {
+function HeaderOnly({ children }: { children: React.ReactNode }) {
   return (
     <Fragment>
       <Header />

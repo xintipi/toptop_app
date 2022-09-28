@@ -7,7 +7,7 @@ import styles from './Default.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Default({ children }: any) {
+function Default({ children }: { children: React.ReactNode }) {
   return (
     <Fragment>
       <Header />
