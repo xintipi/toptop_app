@@ -1,7 +1,9 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import React, { ChangeEvent, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { TFunction } from 'i18next';
+import React, { ChangeEvent, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import {
   ArrowIcon,
@@ -19,7 +21,7 @@ import {
 } from '@/assets/icons';
 import bgUser from '@/assets/user.jpeg';
 import { StyledAvatar } from '@/components/Styled/StyledAvatar';
-import { IListItems, StyledLanguage } from '@/components/Styled/StyledLanguage';
+import { StyledLanguage } from '@/components/Styled/StyledLanguage';
 import {
   StyledPopperProfile,
   StyledPopperSearch,
@@ -31,6 +33,8 @@ import {
   StyleIconPopup,
 } from '@/components/Styled/StyleIcon';
 import searchData from '@/dummy/search.json';
+import { LanguagesEnum } from '@/enums';
+import { i18n } from '@/locales';
 
 import styles from './Header.module.scss';
 
@@ -38,6 +42,8 @@ const cx = classNames.bind(styles);
 
 function Header() {
   const navigate = useNavigate();
+  const [_searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
 
   const [searchInput, setSearchInput] = useState<string>('');
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -45,25 +51,19 @@ function Header() {
   const [searchResult, setSearchResult] = useState<any>([1, 2, 3]);
   const [showLang, setShowLang] = useState<boolean>(false);
 
-  const listLanguages = useMemo<IListItems[]>(() => {
-    return [
-      { id: 1, name: 'English' },
-      { id: 2, name: 'Tiếng Việt (Việt Nam)' },
-    ];
-  }, []);
-
   const handleClickOut = () => {
     setShowPopperProfile(false);
     setShowLang(false);
   };
 
-  const handleSearch = (evt: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(evt.target.value);
-  };
-
   const handleClear = () => {
     setSearchInput('');
     inputRef.current?.focus();
+  };
+
+  const onChangeLanguage = (lang: string | number) => {
+    i18n.changeLanguage(lang as string).then((r: TFunction) => r);
+    setSearchParams({ lang: i18n.language });
   };
 
   return (
@@ -89,7 +89,9 @@ function Header() {
                         </StyleIconPopup>
                       </li>
                     ))}
-                  {searchData.accounts && <div className="account-title">Accounts</div>}
+                  {searchData.accounts && (
+                    <div className="account-title">{t('accounts')}</div>
+                  )}
                   {searchData.accounts &&
                     searchData.accounts.map((item) => (
                       <li className="account-content" key={item.id}>
@@ -109,7 +111,7 @@ function Header() {
                       </li>
                     ))}
                   <li className="more-text">
-                    <p>View all results for "stutter official"</p>
+                    <p>{t('view_result', { result: 'stutter official' })}</p>
                   </li>
                 </ul>
               </StyledPopperSearch>
@@ -119,9 +121,11 @@ function Header() {
               <input
                 type="text"
                 value={searchInput}
-                placeholder="Search accounts and videos"
+                placeholder={t('ph_search_input')}
                 ref={inputRef}
-                onChange={(evt: ChangeEvent<HTMLInputElement>) => handleSearch(evt)}
+                onChange={(evt: ChangeEvent<HTMLInputElement>) =>
+                  setSearchInput(evt.target.value)
+                }
               />
               {searchInput && (
                 <div className={cx('icon-clear')} onClick={() => handleClear()}>
@@ -139,7 +143,7 @@ function Header() {
           <div className={cx('upload-container')}>
             <StyledIcon path="/upload" className={cx('upload')}>
               <UploadIcon className={cx('plus-icon')} />
-              <span className={cx('upload-text')}>Upload</span>
+              <span className={cx('upload-text')}>{t('upload')}</span>
             </StyledIcon>
           </div>
           <div className={cx('message-container')}>
@@ -167,34 +171,37 @@ function Header() {
                     <li>
                       <StyleIconPopup path="/@tough95">
                         <ProFileIcon />
-                        <span>View profile</span>
+                        <span>{t('view_profile')}</span>
                       </StyleIconPopup>
                     </li>
                     <li>
                       <StyleIconPopup path="/setting">
                         <SettingIcon />
-                        <span>Setting</span>
+                        <span>{t('setting')}</span>
                       </StyleIconPopup>
                     </li>
                     <li role="presentation" onClick={() => setShowLang(true)}>
                       <StyleIconPopup>
                         <LanguageIcon />
-                        <span>English</span>
+                        <span>{t('language')}</span>
                       </StyleIconPopup>
                     </li>
                     <li className="logout-entrance">
                       <StyleIconPopup path="/logout">
                         <LogoutIcon />
-                        <span>Log out</span>
+                        <span>{t('log_out')}</span>
                       </StyleIconPopup>
                     </li>
                   </ul>
                 ) : (
                   <StyledLanguage
-                    title="Language"
-                    lists={listLanguages}
+                    title={t('lang_title')}
+                    lists={LanguagesEnum}
                     open={showLang}
                     onBack={(payload: boolean) => setShowLang(payload)}
+                    onSwitchLanguage={(payload: string | number) =>
+                      onChangeLanguage(payload)
+                    }
                   />
                 )}
               </StyledPopperProfile>

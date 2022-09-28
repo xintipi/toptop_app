@@ -1,12 +1,19 @@
 import './App.scss';
 
-import React, { Fragment } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import React, { Fragment, useEffect } from 'react';
+import { Navigate, Route, Routes, useLocation, useSearchParams } from 'react-router-dom';
 
+import { i18n } from '@/locales';
 import { publicRoutes, Record } from '@/routes';
 
 function App() {
   const { pathname } = useLocation();
+  const [_searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    // set params lang on url
+    setSearchParams({ lang: i18n.language });
+  }, [pathname]);
 
   return (
     <Routes>

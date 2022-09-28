@@ -14,9 +14,10 @@ interface ILanguageRecord {
   open: boolean;
   lists: IListItems[];
   onBack(b: boolean): void;
+  onSwitchLanguage(b: string | number): void;
 }
 
-const Language: React.FC<ILanguageRecord> = (props, _context) => {
+const Language: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) => {
   return (
     <div className={props.className}>
       <div
@@ -30,7 +31,13 @@ const Language: React.FC<ILanguageRecord> = (props, _context) => {
       </div>
       <ul>
         {props.lists.map((lang: IListItems) => (
-          <li key={lang.id}>{lang.name}</li>
+          <li
+            role="presentation"
+            key={lang.id}
+            onClick={() => props.onSwitchLanguage(lang.id)}
+          >
+            {lang.name}
+          </li>
         ))}
       </ul>
     </div>
