@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { BackIcon } from '@/assets/icons';
@@ -18,6 +19,8 @@ interface ILanguageRecord {
 }
 
 const Language: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) => {
+  const [searchParams] = useSearchParams();
+
   return (
     <div className={props.className}>
       <div
@@ -34,6 +37,7 @@ const Language: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) =
           <li
             role="presentation"
             key={lang.id}
+            className={`${searchParams.get('lang') === lang.id ? 'active' : null}`}
             onClick={() => props.onSwitchLanguage(lang.id)}
           >
             {lang.name}
@@ -70,6 +74,9 @@ const StyledLanguage = styled(Language)`
     li {
       padding: 10px 24px;
       font-family: var(--fontFamilyHeading);
+      &.active {
+        background-color: rgba(var(--primaryColor), 0.03);
+      }
     }
   }
 `;

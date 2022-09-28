@@ -62,8 +62,10 @@ function Header() {
   };
 
   const onChangeLanguage = (lang: string | number) => {
-    i18n.changeLanguage(lang as string).then((r: TFunction) => r);
-    setSearchParams({ lang: i18n.language });
+    i18n.changeLanguage(lang as string).then((_r: TFunction) => {
+      setSearchParams({ lang: i18n.language });
+      handleClickOut();
+    });
   };
 
   return (
@@ -141,13 +143,13 @@ function Header() {
         </div>
         <div className={cx('header-right')}>
           <div className={cx('upload-container')}>
-            <StyledIcon path="/upload" className={cx('upload')}>
+            <StyledIcon path={`/upload?lang=${i18n.language}`} className={cx('upload')}>
               <UploadIcon className={cx('plus-icon')} />
               <span className={cx('upload-text')}>{t('upload')}</span>
             </StyledIcon>
           </div>
           <div className={cx('message-container')}>
-            <StyledIcon path="/message">
+            <StyledIcon path={`/message?lang=${i18n.language}`}>
               <MessageIcon />
             </StyledIcon>
           </div>
@@ -169,13 +171,13 @@ function Header() {
                 {!showLang ? (
                   <ul>
                     <li>
-                      <StyleIconPopup path="/@tough95">
+                      <StyleIconPopup path={`/@tough95?lang=${i18n.language}`}>
                         <ProFileIcon />
                         <span>{t('view_profile')}</span>
                       </StyleIconPopup>
                     </li>
                     <li>
-                      <StyleIconPopup path="/setting">
+                      <StyleIconPopup path={`/setting?lang=${i18n.language}`}>
                         <SettingIcon />
                         <span>{t('setting')}</span>
                       </StyleIconPopup>
