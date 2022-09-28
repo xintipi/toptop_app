@@ -19,8 +19,7 @@
     "postinstall": "husky install",
     "pre-commit": "npm run format",
     "test": "vitest",
-    "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

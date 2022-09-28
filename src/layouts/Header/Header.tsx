@@ -119,8 +119,9 @@ function Header() {
               </StyledPopperSearch>
             )}
           >
-            <form data-form="search" className={cx('search-input')}>
+            <form className={cx('search-input')}>
               <input
+                data-testid="search"
                 type="text"
                 value={searchInput}
                 placeholder={t('ph_search_input')}
@@ -167,7 +168,7 @@ function Header() {
             interactive={true}
             onClickOutside={() => handleClickOut()}
             render={(attrs) => (
-              <StyledPopperProfile tabIndex={-1} {...attrs} data-tippy="profile">
+              <StyledPopperProfile tabIndex={-1} {...attrs} data-testid="profile">
                 <StyledArrowIcon>
                   <ArrowIcon />
                 </StyledArrowIcon>

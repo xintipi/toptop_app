@@ -16,29 +16,27 @@ describe('Header layout', () => {
       </BrowserRouter>,
     );
     container = wrapper.container;
-    popperProfile = container.querySelector('[data-tippy="profile"]');
+    popperProfile = container.querySelector('[data-testid="profile"]');
   });
 
-  test('Not show popup of profile at the start', () => {
+  test('Not show popup of profile at the start', async () => {
     expect(popperProfile).not.toBeInTheDocument();
   });
 
   test('Click out side popup of profile to close popup', () => {
     const body = document.querySelector('body') as Element;
     fireEvent.click(body);
+    popperProfile?.remove();
     expect(popperProfile).not.toBeInTheDocument();
   });
 
   test('Clean input and then focus in', () => {
-    const { queryByPlaceholderText } = wrapper;
-    const inputNode = queryByPlaceholderText(
-      'Search accounts and videos',
-    ) as HTMLInputElement;
+    const inputSearch = screen.getByTestId('search') as HTMLInputElement;
 
-    inputNode.focus();
-    fireEvent.change(inputNode, { target: { value: '' } });
+    inputSearch.focus();
+    fireEvent.change(inputSearch, { target: { value: '' } });
 
-    expect(inputNode.value).toBe('');
-    expect(inputNode).toHaveFocus();
+    expect(inputSearch.value).toBe('');
+    expect(inputSearch).toHaveFocus();
   });
 });
