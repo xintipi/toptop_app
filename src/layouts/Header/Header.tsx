@@ -132,7 +132,7 @@ function Header() {
               />
               {searchInput && (
                 <div
-                  data-clean="clean"
+                  data-testid="clear"
                   className={cx('icon-clear')}
                   onClick={() => handleClear()}
                 >

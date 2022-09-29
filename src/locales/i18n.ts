@@ -28,7 +28,4 @@ i18n
   })
   .then((r: TFunction) => r);
 
-// change language
-// i18n.changeLanguage(LocalesEnum.En).then((r: TFunction) => r);
-
 export default i18n;
