@@ -14,8 +14,8 @@ interface ILanguageRecord {
   title: string;
   open: boolean;
   lists: IListItems[];
-  onBack(b: boolean): void;
-  onSwitchLanguage(b: string | number): void;
+  onBack: (b: boolean) => void;
+  onSwitchLanguage: (b: string | number) => void;
 }
 
 const Language: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) => {

@@ -168,7 +168,7 @@ function Header() {
             interactive={true}
             onClickOutside={() => handleClickOut()}
             render={(attrs) => (
-              <StyledPopperProfile tabIndex={-1} {...attrs} data-testid="profile">
+              <StyledPopperProfile tabIndex={-1} {...attrs}>
                 <StyledArrowIcon>
                   <ArrowIcon />
                 </StyledArrowIcon>
