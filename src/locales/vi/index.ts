@@ -7,6 +7,7 @@ const TRANSLATIONS_VI = {
   language: 'Tiếng Việt',
   log_out: 'Đăng xuất',
   lang_title: 'Ngôn ngữ',
+  login: 'Đăng nhập',
   view_result: 'Xem tất cả kết quả dành cho "{{ result }}"',
   date_format_one: '{{-date, DD/MM/YYYY}}',
   date_format_two: '{{date, DD-MM-YYYY}}',

@@ -7,6 +7,7 @@ const TRANSLATIONS_EN = {
   language: 'English',
   log_out: 'Log out',
   lang_title: 'Language',
+  login: 'Login',
   view_result: 'View all results for "{{ result }}"',
   date_format_one: '{{-date, YYYY/MM/DD}}',
   date_format_two: '{{date, DD-MM-YYYY}}',

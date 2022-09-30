@@ -8,7 +8,7 @@ interface AvatarRecord {
   alt: string;
 }
 
-const Avatar = ({ className, width, height, src, alt }: AvatarRecord) => {
+const AvatarComp = ({ className, width, height, src, alt }: AvatarRecord) => {
   return (
     <span className={className} style={{ width, height }}>
       <img src={src} alt={alt} loading="lazy" />
@@ -16,7 +16,7 @@ const Avatar = ({ className, width, height, src, alt }: AvatarRecord) => {
   );
 };
 
-const StyledAvatar = styled(Avatar)`
+const Avatar = styled(AvatarComp)`
   display: inline-block;
   margin: 0 12px 0 0;
   padding: 0;
@@ -38,4 +38,4 @@ const StyledAvatar = styled(Avatar)`
   }
 `;
 
-export { StyledAvatar };
+export { Avatar };

@@ -1,36 +1,34 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { TFunction } from 'i18next';
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, Fragment, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import {
-  ArrowIcon,
-  ClearIcon,
-  InboxIcon,
-  LanguageIcon,
+  Arrow,
+  Clear,
+  Inbox,
+  Language,
   LogoTiktok,
-  LogoutIcon,
-  MessageIcon,
-  ProFileIcon,
-  SearchButtonIcon,
-  SettingIcon,
-  UploadIcon,
-  VerifyBadgeIcon,
+  Logout,
+  Message,
+  Profile,
+  SearchButton,
+  Setting,
+  Upload,
+  VerifyBadge,
 } from '@/assets/icons';
 import bgUser from '@/assets/user.jpeg';
-import { StyledAvatar } from '@/components/Styled/StyledAvatar';
-import { StyledLanguage } from '@/components/Styled/StyledLanguage';
+import { Avatar } from '@/components/Styled/StyledAvatar';
+import { Button } from '@/components/Styled/StyledButton';
+import { Locales } from '@/components/Styled/StyledLocale';
+import { PopperProfile, PopperSearch } from '@/components/Styled/StyledPopper';
 import {
-  StyledPopperProfile,
-  StyledPopperSearch,
-} from '@/components/Styled/StyledPopper';
-import {
-  StyledArrowIcon,
-  StyledIcon,
-  StyledInboxIcon,
-  StyleIconPopup,
+  IconArrow,
+  IconInbox,
+  IconPopup,
+  IconPrimary,
 } from '@/components/Styled/StyleIcon';
 import searchData from '@/dummy/search.json';
 import { LanguagesEnum } from '@/enums';
@@ -50,6 +48,7 @@ function Header() {
   const [showPopperProfile, setShowPopperProfile] = useState<boolean>(false);
   const [searchResult, setSearchResult] = useState<any>([1, 2, 3]);
   const [showLang, setShowLang] = useState<boolean>(false);
+  const [userLogged] = useState<boolean>(false);
 
   const handleClickOut = () => {
     setShowPopperProfile(false);
@@ -80,15 +79,15 @@ function Header() {
             interactive
             onClickOutside={() => setSearchResult([])}
             render={(attrs) => (
-              <StyledPopperSearch tabIndex={-1} {...attrs}>
+              <PopperSearch tabIndex={-1} {...attrs}>
                 <ul>
                   {searchData.keywords &&
                     searchData.keywords.map((item) => (
                       <li key={item.id}>
-                        <StyleIconPopup>
-                          <SearchButtonIcon />
+                        <IconPopup>
+                          <SearchButton />
                           <span>{item.key_name}</span>
-                        </StyleIconPopup>
+                        </IconPopup>
                       </li>
                     ))}
                   {searchData.accounts && (
@@ -97,7 +96,7 @@ function Header() {
                   {searchData.accounts &&
                     searchData.accounts.map((item) => (
                       <li className="account-content" key={item.id}>
-                        <StyledAvatar
+                        <Avatar
                           width="40px"
                           height="40px"
                           src={item.avatar}
@@ -106,7 +105,7 @@ function Header() {
                         <div className="item">
                           <h4 className="item__title">
                             {item.chanel}
-                            <VerifyBadgeIcon />
+                            <VerifyBadge />
                           </h4>
                           <p className="item__desc">{item.desc_name}</p>
                         </div>
@@ -116,7 +115,7 @@ function Header() {
                     <p>{t('view_result', { result: 'stutter official' })}</p>
                   </li>
                 </ul>
-              </StyledPopperSearch>
+              </PopperSearch>
             )}
           >
             <form className={cx('search-input')}>
@@ -136,72 +135,85 @@ function Header() {
                   className={cx('icon-clear')}
                   onClick={() => handleClear()}
                 >
-                  <ClearIcon />
+                  <Clear />
                 </div>
               )}
               <span className={cx('splitter')}></span>
               <button type="submit" className={cx('search-button')}>
-                <SearchButtonIcon />
+                <SearchButton />
               </button>
             </form>
           </Tippy>
         </div>
         <div className={cx('header-right')}>
           <div className={cx('upload-container')}>
-            <StyledIcon path={`/upload?lang=${i18n.language}`} className={cx('upload')}>
-              <UploadIcon className={cx('plus-icon')} />
-              <span className={cx('upload-text')}>{t('upload')}</span>
-            </StyledIcon>
+            <Button
+              icon={<Upload />}
+              style={{ minWidth: '110px' }}
+              onClick={() => navigate(`/upload?lang=${i18n.language}`)}
+            >
+              {t('upload')}
+            </Button>
           </div>
-          <div className={cx('message-container')}>
-            <StyledIcon path={`/message?lang=${i18n.language}`}>
-              <MessageIcon />
-            </StyledIcon>
-          </div>
-          <div className={cx('inbox-container')}>
-            <StyledInboxIcon>
-              <InboxIcon />
-            </StyledInboxIcon>
-          </div>
+
+          {userLogged ? (
+            <Fragment>
+              <div className={cx('message-container')}>
+                <IconPrimary path={`/message?lang=${i18n.language}`}>
+                  <Message />
+                </IconPrimary>
+              </div>
+              <div className={cx('inbox-container')}>
+                <IconInbox>
+                  <Inbox />
+                </IconInbox>
+              </div>
+            </Fragment>
+          ) : (
+            <Button danger ghost>
+              {t('login')}
+            </Button>
+          )}
+
           <Tippy
             visible={showPopperProfile}
             interactive={true}
             onClickOutside={() => handleClickOut()}
             render={(attrs) => (
-              <StyledPopperProfile tabIndex={-1} {...attrs}>
-                <StyledArrowIcon>
-                  <ArrowIcon />
-                </StyledArrowIcon>
+              <PopperProfile tabIndex={-1} {...attrs}>
+                <IconArrow>
+                  <Arrow />
+                </IconArrow>
 
                 {!showLang ? (
                   <ul>
                     <li>
-                      <StyleIconPopup path={`/@tough95?lang=${i18n.language}`}>
-                        <ProFileIcon />
+                      <IconPopup path={`/@tough95?lang=${i18n.language}`}>
+                        <Profile />
                         <span>{t('view_profile')}</span>
-                      </StyleIconPopup>
+                      </IconPopup>
                     </li>
                     <li>
-                      <StyleIconPopup path={`/setting?lang=${i18n.language}`}>
-                        <SettingIcon />
+                      <IconPopup path={`/setting?lang=${i18n.language}`}>
+                        <Setting />
                         <span>{t('setting')}</span>
-                      </StyleIconPopup>
+                      </IconPopup>
                     </li>
                     <li role="presentation" onClick={() => setShowLang(true)}>
-                      <StyleIconPopup>
-                        <LanguageIcon />
+                      <IconPopup>
+                        <Language />
                         <span>{t('language')}</span>
-                      </StyleIconPopup>
+                      </IconPopup>
                     </li>
                     <li className="logout-entrance">
-                      <StyleIconPopup path="/logout">
-                        <LogoutIcon />
+                      <IconPopup path="/logout">
+                        <Logout />
                         <span>{t('log_out')}</span>
-                      </StyleIconPopup>
+                      </IconPopup>
                     </li>
                   </ul>
                 ) : (
-                  <StyledLanguage
+                  <Locales
                     title={t('lang_title')}
                     lists={LanguagesEnum}
                     open={showLang}
@@ -211,14 +223,18 @@ function Header() {
                     }
                   />
                 )}
-              </StyledPopperProfile>
+              </PopperProfile>
             )}
           >
-            <div
-              className={cx('profile-container')}
-              style={{ backgroundImage: `url(${bgUser})` }}
-              onClick={() => setShowPopperProfile(!showPopperProfile)}
-            />
+            {userLogged ? (
+              <div
+                className={cx('profile-container')}
+                style={{ backgroundImage: `url(${bgUser})` }}
+                onClick={() => setShowPopperProfile(!showPopperProfile)}
+              />
+            ) : (
+              <Fragment />
+            )}
           </Tippy>
         </div>
       </div>

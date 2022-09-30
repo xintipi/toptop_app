@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { BackIcon } from '@/assets/icons';
+import { Back } from '@/assets/icons';
 
 export interface IListItems {
   id: string | number;
@@ -18,17 +18,14 @@ interface ILanguageRecord {
   onSwitchLanguage: (b: string | number) => void;
 }
 
-const Language: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) => {
+const LocaleComp: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) => {
   const [searchParams] = useSearchParams();
 
   return (
     <div className={props.className}>
-      <div
-        className={`${props.className} div__header`}
-        onClick={() => props.onBack(!props.open)}
-      >
+      <div className="div__header" onClick={() => props.onBack(!props.open)}>
         <i>
-          <BackIcon />
+          <Back />
         </i>
         <p>{props.title}</p>
       </div>
@@ -48,7 +45,7 @@ const Language: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) =
   );
 };
 
-const StyledLanguage = styled(Language)`
+const Locales = styled(LocaleComp)`
   & .div__header {
     display: flex;
     align-items: center;
@@ -81,4 +78,4 @@ const StyledLanguage = styled(Language)`
   }
 `;
 
-export { StyledLanguage };
+export { Locales };

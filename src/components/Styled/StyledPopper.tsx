@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledPopper = styled.div`
+const Popper = styled.div`
   z-index: 1;
   background-color: rgba(var(--primaryBackground), 1);
   border-radius: 8px;
@@ -34,7 +34,7 @@ const StyledPopper = styled.div`
   }
 `;
 
-const StyledPopperSearch = styled(StyledPopper)`
+const PopperSearch = styled(Popper)`
   width: 361px;
   max-height: min((100vh - 96px) - 60px, 734px);
   overflow: hidden auto;
@@ -83,10 +83,10 @@ const StyledPopperSearch = styled(StyledPopper)`
   }
 `;
 
-const StyledPopperProfile = styled(StyledPopper)`
+const PopperProfile = styled(Popper)`
   position: absolute;
   top: calc(100%);
   right: -28px;
 `;
 
-export { StyledPopper, StyledPopperProfile, StyledPopperSearch };
+export { Popper, PopperProfile, PopperSearch };

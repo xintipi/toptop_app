@@ -30,7 +30,7 @@ const Icon = ({
   );
 };
 
-const StyledIcon = styled(Icon)`
+const IconPrimary = styled(Icon)`
   & svg {
     display: block;
     width: 26px;
@@ -39,14 +39,14 @@ const StyledIcon = styled(Icon)`
   }
 `;
 
-const StyledInboxIcon = styled(Icon)`
+const IconInbox = styled(Icon)`
   & svg {
     cursor: pointer;
     display: block;
   }
 `;
 
-const StyledArrowIcon = styled(Icon)`
+const IconArrow = styled(Icon)`
   & svg {
     display: block;
     width: 24px;
@@ -57,7 +57,7 @@ const StyledArrowIcon = styled(Icon)`
   }
 `;
 
-const StyleIconPopup = styled(Icon)`
+const IconPopup = styled(Icon)`
   display: flex;
   align-items: center;
   width: 100%;
@@ -69,4 +69,4 @@ const StyleIconPopup = styled(Icon)`
   }
 `;
 
-export { StyledArrowIcon, StyledIcon, StyledInboxIcon, StyleIconPopup };
+export { IconArrow, IconInbox, IconPopup, IconPrimary };
