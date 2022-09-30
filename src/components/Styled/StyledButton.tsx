@@ -39,9 +39,14 @@ const border = (props: Pick<IProps, 'danger'>) => {
 };
 
 const height = (props: Pick<IProps, 'size'>) => {
-  if (props.size === 'small') return '28px';
-  else if (props.size === 'large') return '48px';
-  return '36px';
+  switch (props.size) {
+    case 'small':
+      return '28px';
+    case 'large':
+      return '48px';
+    default:
+      return '36px';
+  }
 };
 
 const color = (props: Pick<IProps, 'danger' | 'ghost'>) => {
