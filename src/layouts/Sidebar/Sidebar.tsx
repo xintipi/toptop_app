@@ -1,16 +1,13 @@
-import classNames from 'classnames/bind';
-import React from 'react';
+import clsx from 'clsx';
 
 import styles from './Sidebar.module.scss';
 
-const cx = classNames.bind(styles);
-
 function Sidebar() {
   return (
-    <nav className={cx('side__nav')}>
+    <nav className={clsx(styles.sideNav)}>
       <div>
-        <div className={cx('side__nav--mask')}>mask</div>
-        <div className={cx('side__nav--container')}>container</div>
+        <div className={clsx(styles.sideNavMask)}>mask</div>
+        <div className={clsx(styles.sideNavContainer)}>container</div>
       </div>
     </nav>
   );

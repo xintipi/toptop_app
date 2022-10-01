@@ -1,13 +1,15 @@
 import { CSSProperties, Fragment, MouseEvent, ReactNode } from 'react';
 import styled from 'styled-components';
 
+import variables from './variables';
+
 type IProps = {
   icon?: ReactNode;
   children?: ReactNode;
   style?: CSSProperties;
   className?: string;
   disable?: boolean;
-  size?: string;
+  size?: 'sm' | 'md' | 'lg';
   danger?: boolean;
   ghost?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -27,32 +29,25 @@ const ButtonComp = (props: IProps) => {
   );
 };
 
-const backgroundColor = (props: IProps) => {
-  if (props.ghost) return 'rgb(254, 44, 85)';
-  return 'rgba(255, 255, 255)';
+const backgroundColor = (props: Pick<IProps, 'ghost'>) => {
+  if (props.ghost) return variables.colors.lightRed;
+  return variables.colors.white;
 };
 
 const border = (props: Pick<IProps, 'danger'>) => {
-  return !props.danger
-    ? '1px solid rgba(22, 24, 35, .12)'
-    : '1px solid rgba(254, 44, 85, 1)';
+  return `1px solid ${
+    !props.danger ? variables.colors.lightReadOpacity_12 : variables.colors.lightRed
+  }`;
 };
 
 const height = (props: Pick<IProps, 'size'>) => {
-  switch (props.size) {
-    case 'small':
-      return '28px';
-    case 'large':
-      return '48px';
-    default:
-      return '36px';
-  }
+  return variables.size[props.size as keyof typeof variables.size];
 };
 
 const color = (props: Pick<IProps, 'danger' | 'ghost'>) => {
-  if (props.ghost) return 'rgb(255, 255, 255)';
-  else if (!props.danger) return 'rgb(22, 24, 35)';
-  return 'rgb(254, 44, 85)';
+  if (props.ghost) return variables.colors.white;
+  else if (!props.danger) return variables.colors.lightBlack;
+  return variables.colors.lightRed;
 };
 
 const Button = styled(ButtonComp)`
@@ -73,7 +68,7 @@ const Button = styled(ButtonComp)`
   &:hover {
     background: ${(props) =>
       !props.ghost
-        ? 'rgba(254, 44, 85, .06)'
+        ? variables.colors.lightReadOpacity_06
         : 'linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55'};
   }
 

@@ -1,5 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
-import classNames from 'classnames/bind';
+import clsx from 'clsx';
 import { TFunction } from 'i18next';
 import React, { ChangeEvent, Fragment, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -20,23 +20,20 @@ import {
   VerifyBadge,
 } from '@/assets/icons';
 import bgUser from '@/assets/user.jpeg';
-import { Avatar } from '@/components/Styled/StyledAvatar';
-import { Button } from '@/components/Styled/StyledButton';
-import { Locales } from '@/components/Styled/StyledLocale';
-import { PopperProfile, PopperSearch } from '@/components/Styled/StyledPopper';
+import { Avatar } from '@/components/Styled/Avatar/StyledAvatar';
+import { Button } from '@/components/Styled/Button/StyledButton';
+import { Locales } from '@/components/Styled/Locale/StyledLocale';
+import { PopperProfile, PopperSearch } from '@/components/Styled/Popper/StyledPopper';
 import {
   IconArrow,
   IconInbox,
   IconPopup,
   IconPrimary,
-} from '@/components/Styled/StyleIcon';
+} from '@/components/Styled/Icon/StyleIcon';
 import searchData from '@/dummy/search.json';
 import { LanguagesEnum } from '@/enums';
 import { i18n } from '@/locales';
-
 import styles from './Header.module.scss';
-
-const cx = classNames.bind(styles);
 
 function Header() {
   const navigate = useNavigate();
@@ -68,12 +65,12 @@ function Header() {
   };
 
   return (
-    <header className={cx('header', 'fixed-top')}>
-      <div className={`container ${cx('wrapper')}`}>
-        <a className={cx('tiktok-logo')} onClick={() => navigate('/')}>
+    <header className={clsx(styles.header, styles.fixedTop)}>
+      <div className={clsx('container', styles.wrapper)}>
+        <a className={clsx(styles.tiktokLogo)} onClick={() => navigate('/')}>
           <LogoTiktok />
         </a>
-        <div className={cx('header-center')}>
+        <div className={clsx(styles.headerCenter)}>
           <Tippy
             visible={!!searchResult.length}
             interactive
@@ -118,7 +115,7 @@ function Header() {
               </PopperSearch>
             )}
           >
-            <form className={cx('search-input')}>
+            <form className={clsx(styles.searchInput)}>
               <input
                 data-testid="search"
                 type="text"
@@ -132,38 +129,36 @@ function Header() {
               {searchInput && (
                 <div
                   data-testid="clear"
-                  className={cx('icon-clear')}
+                  className={clsx(styles.iconClear)}
                   onClick={() => handleClear()}
                 >
                   <Clear />
                 </div>
               )}
-              <span className={cx('splitter')}></span>
-              <button type="submit" className={cx('search-button')}>
+              <span className={clsx(styles.splitter)}></span>
+              <button type="submit" className={clsx(styles.searchButton)}>
                 <SearchButton />
               </button>
             </form>
           </Tippy>
         </div>
-        <div className={cx('header-right')}>
-          <div className={cx('upload-container')}>
-            <Button
-              icon={<Upload />}
-              style={{ minWidth: '110px' }}
-              onClick={() => navigate(`/upload?lang=${i18n.language}`)}
-            >
-              {t('upload')}
-            </Button>
-          </div>
+        <div className={clsx(styles.headerRight)}>
+          <Button
+            icon={<Upload />}
+            style={{ minWidth: '110px' }}
+            onClick={() => navigate(`/upload?lang=${i18n.language}`)}
+          >
+            {t('upload')}
+          </Button>
 
           {userLogged ? (
             <Fragment>
-              <div className={cx('message-container')}>
+              <div className={clsx(styles.messageContainer)}>
                 <IconPrimary path={`/message?lang=${i18n.language}`}>
                   <Message />
                 </IconPrimary>
               </div>
-              <div className={cx('inbox-container')}>
+              <div className={clsx(styles.inboxContainer)}>
                 <IconInbox>
                   <Inbox />
                 </IconInbox>
@@ -228,7 +223,7 @@ function Header() {
           >
             {userLogged ? (
               <div
-                className={cx('profile-container')}
+                className={clsx(styles.profileContainer)}
                 style={{ backgroundImage: `url(${bgUser})` }}
                 onClick={() => setShowPopperProfile(!showPopperProfile)}
               />

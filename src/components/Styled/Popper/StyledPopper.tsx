@@ -39,7 +39,7 @@ const PopperSearch = styled(Popper)`
   max-height: min((100vh - 96px) - 60px, 734px);
   overflow: hidden auto;
   & ul {
-    .account-title {
+    > div {
       height: 30px;
       padding: 5px 12px;
       font-size: 14px;

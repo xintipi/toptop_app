@@ -9,7 +9,7 @@
   background: var(--primaryBackground);
   z-index: 1000;
 
-  &.fixed-top {
+  &.fixedTop {
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -20,17 +20,17 @@
     align-items: center;
     justify-content: space-between;
 
-    .tiktok-logo {
+    .tiktokLogo {
       svg {
         width: 118px;
         height: 42px;
       }
     }
 
-    .header-center {
+    .headerCenter {
       position: relative;
       max-width: 361px;
-      .search-input {
+      .searchInput {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -64,7 +64,7 @@
           }
         }
 
-        .icon-clear {
+        .iconClear {
           display: flex;
           align-items: center;
         }
@@ -76,7 +76,7 @@
           background: rgba(var(--primaryColor), 0.12);
         }
 
-        .search-button {
+        .searchButton {
           padding: 11px 16px 11px 12px;
           margin: -12px -16px;
           font-size: 0;
@@ -97,13 +97,13 @@
       }
     }
 
-    .header-right {
+    .headerRight {
       display: flex;
       flex-direction: row;
       align-items: center;
       position: relative;
 
-      .message-container {
+      .messageContainer {
         margin-left: 16px;
         cursor: pointer;
         height: 32px;
@@ -111,14 +111,14 @@
         position: relative;
       }
 
-      .inbox-container {
+      .inboxContainer {
         margin-left: 16px;
         cursor: pointer;
         height: 32px;
         position: relative;
       }
 
-      .profile-container {
+      .profileContainer {
         margin-left: 24px;
         position: relative;
         width: 32px;

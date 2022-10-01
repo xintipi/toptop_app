@@ -1,18 +1,15 @@
-import classNames from 'classnames/bind';
-import React, { Fragment } from 'react';
+import { ReactNode, Fragment } from 'react';
+import clsx from 'clsx';
 
 import styles from '../Default/Default.module.scss';
-
-const cx = classNames.bind(styles);
-
 import { Header } from '@/layouts';
 
-function HeaderOnly({ children }: { children: React.ReactNode }) {
+function HeaderOnly({ children }: { children: ReactNode }) {
   return (
     <Fragment>
       <Header />
-      <div className={`container ${cx('body-container')}`}>
-        <div className={cx('main-container')}>{children}</div>
+      <div className={clsx(styles.bodyContainer, 'container')}>
+        <div className={clsx('main-container')}>{children}</div>
       </div>
     </Fragment>
   );
