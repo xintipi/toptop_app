@@ -1,32 +1,23 @@
-import React from 'react';
-import { To, useNavigate } from 'react-router-dom';
+import React, { ReactNode, MouseEvent } from 'react';
 import styled from 'styled-components';
 
-const Icon = ({
-  className,
-  path,
-  children,
-}: {
+interface IProps {
   className?: string;
-  path?: string;
-  children: React.ReactNode;
-}) => {
-  const navigate = useNavigate();
+  children: ReactNode;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+}
 
-  const switchPage = (path: To) => {
-    if (path !== '/logout') return navigate(path);
-    // call api logout in here
-    console.log('User was signed out!!!');
-    // and then navigate to home page
-    return navigate('/');
+const Icon = (props: IProps) => {
+  const { className, children } = props;
+
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    props.onClick?.(event);
   };
 
-  return path ? (
-    <a className={className} onClick={() => switchPage(path)}>
+  return (
+    <a className={className} onClick={(event) => handleClick(event)}>
       {children}
     </a>
-  ) : (
-    <div className={className}>{children}</div>
   );
 };
 

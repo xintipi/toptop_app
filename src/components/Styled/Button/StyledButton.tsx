@@ -8,23 +8,30 @@ type IProps = {
   children?: ReactNode;
   style?: CSSProperties;
   className?: string;
-  disable?: boolean;
+  disabled?: boolean;
   size?: 'sm' | 'md' | 'lg';
   danger?: boolean;
   ghost?: boolean;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event?: MouseEvent<HTMLButtonElement>) => void;
 };
 
 const ButtonComp = (props: IProps) => {
+  const { className, style, icon, children, disabled } = props;
+
+  const handleClick = (evt: MouseEvent<HTMLButtonElement>) => {
+    if (disabled) return;
+    props.onClick?.(evt);
+  };
+
   return (
     <button
-      className={props.className}
-      disabled={props.disable}
-      style={props.style}
-      onClick={(event) => props.onClick?.(event)}
+      className={className}
+      disabled={disabled}
+      style={style}
+      onClick={(event) => handleClick(event)}
     >
-      {props.icon && <Fragment>{props.icon}</Fragment>}
-      <span>{props.children}</span>
+      {icon && <Fragment>{icon}</Fragment>}
+      <span>{children}</span>
     </button>
   );
 };
@@ -64,6 +71,11 @@ const Button = styled(ButtonComp)`
   border: ${(props) => border(props)};
   height: ${(props) => height(props)};
   color: ${(props) => color(props)};
+  
+  &:disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
 
   &:hover {
     background: ${(props) =>

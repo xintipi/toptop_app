@@ -155,7 +155,7 @@ function Header() {
           {userLogged ? (
             <Fragment>
               <div className={clsx(styles.MessageContainer)}>
-                <IconPrimary path={`/message?lang=${i18n.language}`}>
+                <IconPrimary onClick={() => navigate(`/message?lang=${i18n.language}`)}>
                   <Message />
                 </IconPrimary>
               </div>
@@ -166,7 +166,7 @@ function Header() {
               </div>
             </Fragment>
           ) : (
-            <Button danger ghost>
+            <Button onClick={() => navigate('/login')} danger ghost>
               {t('login')}
             </Button>
           )}
@@ -184,13 +184,17 @@ function Header() {
                 {!showLang ? (
                   <ul>
                     <li>
-                      <IconPopup path={`/@tough95?lang=${i18n.language}`}>
+                      <IconPopup
+                        onClick={() => navigate(`/@tough95?lang=${i18n.language}`)}
+                      >
                         <Profile />
                         <span>{t('view_profile')}</span>
                       </IconPopup>
                     </li>
                     <li>
-                      <IconPopup path={`/setting?lang=${i18n.language}`}>
+                      <IconPopup
+                        onClick={() => navigate(`/setting?lang=${i18n.language}`)}
+                      >
                         <Setting />
                         <span>{t('setting')}</span>
                       </IconPopup>
@@ -202,7 +206,7 @@ function Header() {
                       </IconPopup>
                     </li>
                     <li className="logout-entrance">
-                      <IconPopup path="/logout">
+                      <IconPopup onClick={() => navigate('/logout')}>
                         <Logout />
                         <span>{t('log_out')}</span>
                       </IconPopup>
