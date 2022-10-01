@@ -71,10 +71,10 @@ const Button = styled(ButtonComp)`
   border: ${(props) => border(props)};
   height: ${(props) => height(props)};
   color: ${(props) => color(props)};
-  
+
   &:disabled {
     pointer-events: none;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &:hover {

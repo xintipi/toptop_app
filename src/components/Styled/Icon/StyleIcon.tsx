@@ -1,4 +1,4 @@
-import React, { ReactNode, MouseEvent } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface IProps {
