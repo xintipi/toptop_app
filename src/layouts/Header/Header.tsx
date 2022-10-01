@@ -8,6 +8,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Arrow,
   Clear,
+  EllipsisVertical,
   Inbox,
   Language,
   LogoTiktok,
@@ -46,7 +47,7 @@ function Header() {
   const [showPopperProfile, setShowPopperProfile] = useState<boolean>(false);
   const [searchResult, setSearchResult] = useState<any>([1, 2, 3]);
   const [showLang, setShowLang] = useState<boolean>(false);
-  const [userLogged] = useState<boolean>(false);
+  const [userLogged] = useState<boolean>(true);
 
   const handleClickOut = () => {
     setShowPopperProfile(false);
@@ -58,7 +59,7 @@ function Header() {
     inputRef.current?.focus();
   };
 
-  const onChangeLanguage = (lang: string | number) => {
+  const onChangeLocale = (lang: string | number) => {
     i18n.changeLanguage(lang as string).then((_r: TFunction) => {
       setSearchParams({ lang: i18n.language });
       handleClickOut();
@@ -68,13 +69,14 @@ function Header() {
   return (
     <header className={clsx(styles.Header, styles.FixedTop)}>
       <div className={clsx(styles.Wrapper, 'container')}>
-        <a className={clsx(styles.HeaderLeft, styles.Logo)} onClick={() => navigate('/')}>
+        <a className={clsx(styles.HeaderLeft, styles.Logo)}>
           <LogoTiktok />
         </a>
         <div className={clsx(styles.HeaderCenter)}>
           <Tippy
             visible={!!searchResult.length}
             interactive
+            placement="bottom-start"
             onClickOutside={() => setSearchResult([])}
             render={(attrs) => (
               <PopperSearch tabIndex={-1} {...attrs}>
@@ -83,7 +85,7 @@ function Header() {
                     searchData.keywords.map((item) => (
                       <li key={item.id}>
                         <IconPopup>
-                          <SearchButton />
+                          <SearchButton className={clsx('icon-width', 'mr-8')} />
                           <span>{item.key_name}</span>
                         </IconPopup>
                       </li>
@@ -109,7 +111,7 @@ function Header() {
                         </div>
                       </li>
                     ))}
-                  <li className="more-text">
+                  <li>
                     <p>{t('view_result', { result: 'stutter official' })}</p>
                   </li>
                 </ul>
@@ -145,7 +147,7 @@ function Header() {
         </div>
         <div className={clsx(styles.HeaderRight)}>
           <Button
-            icon={<Upload />}
+            icon={<Upload className={clsx('icon-width', 'mr-8')} />}
             style={{ minWidth: '110px' }}
             onClick={() => navigate(`/upload?lang=${i18n.language}`)}
           >
@@ -174,6 +176,7 @@ function Header() {
           <Tippy
             visible={showPopperProfile}
             interactive={true}
+            placement="bottom-start"
             onClickOutside={() => handleClickOut()}
             render={(attrs) => (
               <PopperProfile tabIndex={-1} {...attrs}>
@@ -183,44 +186,48 @@ function Header() {
 
                 {!showLang ? (
                   <ul>
-                    <li>
-                      <IconPopup
-                        onClick={() => navigate(`/@tough95?lang=${i18n.language}`)}
-                      >
-                        <Profile />
-                        <span>{t('view_profile')}</span>
-                      </IconPopup>
-                    </li>
-                    <li>
-                      <IconPopup
-                        onClick={() => navigate(`/setting?lang=${i18n.language}`)}
-                      >
-                        <Setting />
-                        <span>{t('setting')}</span>
-                      </IconPopup>
-                    </li>
+                    {userLogged && (
+                      <li>
+                        <IconPopup
+                          onClick={() => navigate(`/@tough95?lang=${i18n.language}`)}
+                        >
+                          <Profile className={clsx('icon-width', 'mr-8')} />
+                          <span>{t('view_profile')}</span>
+                        </IconPopup>
+                      </li>
+                    )}
+                    {userLogged && (
+                      <li>
+                        <IconPopup
+                          onClick={() => navigate(`/setting?lang=${i18n.language}`)}
+                        >
+                          <Setting className={clsx('icon-width', 'mr-8')} />
+                          <span>{t('view_setting')}</span>
+                        </IconPopup>
+                      </li>
+                    )}
                     <li role="presentation" onClick={() => setShowLang(true)}>
                       <IconPopup>
-                        <Language />
-                        <span>{t('language')}</span>
+                        <Language className={clsx('icon-width', 'mr-8')} />
+                        <span>{t('view_language')}</span>
                       </IconPopup>
                     </li>
-                    <li className="logout-entrance">
-                      <IconPopup onClick={() => navigate('/logout')}>
-                        <Logout />
-                        <span>{t('log_out')}</span>
-                      </IconPopup>
-                    </li>
+                    {userLogged && (
+                      <li className={clsx(styles.LogoutEntrance)}>
+                        <IconPopup onClick={() => navigate('/logout')}>
+                          <Logout className={clsx('icon-width', 'mr-8')} />
+                          <span>{t('view_logout')}</span>
+                        </IconPopup>
+                      </li>
+                    )}
                   </ul>
                 ) : (
                   <Locales
                     title={t('lang_title')}
                     lists={LanguagesEnum}
                     open={showLang}
-                    onBack={(payload: boolean) => setShowLang(payload)}
-                    onSwitchLanguage={(payload: string | number) =>
-                      onChangeLanguage(payload)
-                    }
+                    onBack={(lang: boolean) => setShowLang(lang)}
+                    onChangeLocale={(locale: string | number) => onChangeLocale(locale)}
                   />
                 )}
               </PopperProfile>
@@ -233,7 +240,12 @@ function Header() {
                 onClick={() => setShowPopperProfile(!showPopperProfile)}
               />
             ) : (
-              <Fragment />
+              <i
+                className={clsx(styles.MoreIconWrapper)}
+                onClick={() => setShowPopperProfile(!showPopperProfile)}
+              >
+                <EllipsisVertical className={clsx('icon-width', 'd-block')} />
+              </i>
             )}
           </Tippy>
         </div>

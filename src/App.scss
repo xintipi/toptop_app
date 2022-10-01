@@ -6,6 +6,19 @@
   margin-left: auto;
 }
 
+.icon-width {
+  width: 20px;
+  height: 20px;
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
+
+.d-block {
+  display: block;
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 1150px;

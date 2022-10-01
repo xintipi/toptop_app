@@ -52,12 +52,6 @@ const IconPopup = styled(Icon)`
   display: flex;
   align-items: center;
   width: 100%;
-
-  & svg {
-    margin-right: 8px;
-    width: 20px;
-    height: 20px;
-  }
 `;
 
 export { IconArrow, IconInbox, IconPopup, IconPrimary };

@@ -127,6 +127,18 @@
         border-radius: 50%;
         cursor: pointer;
       }
+
+      .LogoutEntrance {
+        border-top: 1px solid rgba(var(--primaryColor), 0.12);
+      }
+
+      .MoreIconWrapper {
+        margin-left: 16px;
+        position: relative;
+        cursor: pointer;
+        font-style: normal;
+        padding: 0 4px;
+      }
     }
   }
 }

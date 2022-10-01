@@ -86,8 +86,6 @@ const Button = styled(ButtonComp)`
 
   & svg,
   & img {
-    height: 20px;
-    width: 20px;
     margin-right: 8px;
   }
 

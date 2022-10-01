@@ -85,8 +85,7 @@ const PopperSearch = styled(Popper)`
 
 const PopperProfile = styled(Popper)`
   position: absolute;
-  top: calc(100%);
-  right: -28px;
+  right: -42px;
 `;
 
 export { Popper, PopperProfile, PopperSearch };

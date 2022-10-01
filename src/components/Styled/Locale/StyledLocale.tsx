@@ -15,7 +15,7 @@ interface ILanguageRecord {
   open: boolean;
   lists: IListItems[];
   onBack: (b: boolean) => void;
-  onSwitchLanguage: (b: string | number) => void;
+  onChangeLocale: (b: string | number) => void;
 }
 
 const LocaleComp: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context) => {
@@ -35,7 +35,7 @@ const LocaleComp: React.FC<ILanguageRecord> = (props: ILanguageRecord, _context)
             role="presentation"
             key={lang.id}
             className={`${searchParams.get('lang') === lang.id ? 'active' : null}`}
-            onClick={() => props.onSwitchLanguage(lang.id)}
+            onClick={() => props.onChangeLocale(lang.id)}
           >
             {lang.name}
           </li>

@@ -2,6 +2,7 @@ export { default as LogoTiktok } from '../tiktok.svg?component';
 export { default as Arrow } from './arrow.svg?component';
 export { default as Back } from './back-arrow.svg?component';
 export { default as Clear } from './clear.svg?component';
+export { default as EllipsisVertical } from './ellipsis-vertical.svg?component';
 export { default as Inbox } from './inbox.svg?component';
 export { default as Language } from './language.svg?component';
 export { default as Logout } from './logout.svg?component';
