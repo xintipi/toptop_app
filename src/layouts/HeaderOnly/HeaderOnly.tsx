@@ -1,8 +1,9 @@
-import { ReactNode, Fragment } from 'react';
 import clsx from 'clsx';
+import { Fragment, ReactNode } from 'react';
+
+import { Header } from '@/layouts';
 
 import styles from '../Default/Default.module.scss';
-import { Header } from '@/layouts';
 
 function HeaderOnly({ children }: { children: ReactNode }) {
   return (

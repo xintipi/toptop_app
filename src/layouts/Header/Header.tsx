@@ -22,17 +22,18 @@ import {
 import bgUser from '@/assets/user.jpeg';
 import { Avatar } from '@/components/Styled/Avatar/StyledAvatar';
 import { Button } from '@/components/Styled/Button/StyledButton';
-import { Locales } from '@/components/Styled/Locale/StyledLocale';
-import { PopperProfile, PopperSearch } from '@/components/Styled/Popper/StyledPopper';
 import {
   IconArrow,
   IconInbox,
   IconPopup,
   IconPrimary,
 } from '@/components/Styled/Icon/StyleIcon';
+import { Locales } from '@/components/Styled/Locale/StyledLocale';
+import { PopperProfile, PopperSearch } from '@/components/Styled/Popper/StyledPopper';
 import searchData from '@/dummy/search.json';
 import { LanguagesEnum } from '@/enums';
 import { i18n } from '@/locales';
+
 import styles from './Header.module.scss';
 
 function Header() {

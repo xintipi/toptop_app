@@ -4,7 +4,7 @@ const variables = {
     lightReadOpacity_06: 'rgba(254, 44, 85, .06)',
     lightReadOpacity_12: 'rgba(254, 44, 85, .12)',
     white: 'rgb(255, 255, 255)',
-    lightBlack: 'rgb(22, 24, 35)'
+    lightBlack: 'rgb(22, 24, 35)',
   },
   size: {
     sm: '28px',

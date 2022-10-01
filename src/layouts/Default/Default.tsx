@@ -1,7 +1,8 @@
-import { ReactNode, Fragment } from 'react';
 import clsx from 'clsx';
+import { Fragment, ReactNode } from 'react';
 
 import { Header, Sidebar } from '@/layouts';
+
 import styles from './Default.module.scss';
 
 function Default({ children }: { children: ReactNode }) {
