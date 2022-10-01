@@ -18,7 +18,7 @@ body {
   margin: 0;
   font-family: var(--fontFamilyParagraph);
   font-size: 14px;
-  color: var(--primaryColor);
+  color: rgb(var(--primaryColor));
   background-color: var(--primaryBackground);
   overscroll-behavior: contain;
   direction: ltr;
@@ -28,7 +28,7 @@ body {
   line-height: 1.5;
 
   a {
-    color: var(--primaryColor);
+    color: rgb(var(--primaryColor));
     -webkit-transition: color 250ms;
     transition: color 250ms;
     text-decoration: none;

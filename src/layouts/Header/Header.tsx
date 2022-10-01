@@ -68,7 +68,7 @@ function Header() {
   return (
     <header className={clsx(styles.header, styles.fixedTop)}>
       <div className={clsx('container', styles.wrapper)}>
-        <a className={clsx(styles.tiktokLogo)} onClick={() => navigate('/')}>
+        <a className={clsx(styles.headerLeft, styles.logo)} onClick={() => navigate('/')}>
           <LogoTiktok />
         </a>
         <div className={clsx(styles.headerCenter)}>
