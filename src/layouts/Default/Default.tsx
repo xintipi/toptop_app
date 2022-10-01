@@ -9,7 +9,7 @@ function Default({ children }: { children: ReactNode }) {
   return (
     <Fragment>
       <Header />
-      <div className={clsx(styles.bodyContainer, 'container')}>
+      <div className={clsx(styles.BodyContainer, 'container')}>
         <Sidebar />
         <div className={clsx('main-container')}>
           <div>{children}</div>

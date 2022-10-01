@@ -9,7 +9,7 @@ function HeaderOnly({ children }: { children: ReactNode }) {
   return (
     <Fragment>
       <Header />
-      <div className={clsx(styles.bodyContainer, 'container')}>
+      <div className={clsx(styles.BodyContainer, 'container')}>
         <div className={clsx('main-container')}>{children}</div>
       </div>
     </Fragment>

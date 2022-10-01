@@ -66,12 +66,12 @@ function Header() {
   };
 
   return (
-    <header className={clsx(styles.header, styles.fixedTop)}>
-      <div className={clsx('container', styles.wrapper)}>
-        <a className={clsx(styles.headerLeft, styles.logo)} onClick={() => navigate('/')}>
+    <header className={clsx(styles.Header, styles.FixedTop)}>
+      <div className={clsx(styles.Wrapper, 'container')}>
+        <a className={clsx(styles.HeaderLeft, styles.Logo)} onClick={() => navigate('/')}>
           <LogoTiktok />
         </a>
-        <div className={clsx(styles.headerCenter)}>
+        <div className={clsx(styles.HeaderCenter)}>
           <Tippy
             visible={!!searchResult.length}
             interactive
@@ -116,7 +116,7 @@ function Header() {
               </PopperSearch>
             )}
           >
-            <form className={clsx(styles.searchInput)}>
+            <form className={clsx(styles.SearchInput)}>
               <input
                 data-testid="search"
                 type="text"
@@ -130,20 +130,20 @@ function Header() {
               {searchInput && (
                 <div
                   data-testid="clear"
-                  className={clsx(styles.iconClear)}
+                  className={clsx(styles.IconClear)}
                   onClick={() => handleClear()}
                 >
                   <Clear />
                 </div>
               )}
-              <span className={clsx(styles.splitter)}></span>
-              <button type="submit" className={clsx(styles.searchButton)}>
+              <span className={clsx(styles.Splitter)}></span>
+              <button type="submit" className={clsx(styles.SearchButton)}>
                 <SearchButton />
               </button>
             </form>
           </Tippy>
         </div>
-        <div className={clsx(styles.headerRight)}>
+        <div className={clsx(styles.HeaderRight)}>
           <Button
             icon={<Upload />}
             style={{ minWidth: '110px' }}
@@ -154,12 +154,12 @@ function Header() {
 
           {userLogged ? (
             <Fragment>
-              <div className={clsx(styles.messageContainer)}>
+              <div className={clsx(styles.MessageContainer)}>
                 <IconPrimary path={`/message?lang=${i18n.language}`}>
                   <Message />
                 </IconPrimary>
               </div>
-              <div className={clsx(styles.inboxContainer)}>
+              <div className={clsx(styles.InboxContainer)}>
                 <IconInbox>
                   <Inbox />
                 </IconInbox>
@@ -224,7 +224,7 @@ function Header() {
           >
             {userLogged ? (
               <div
-                className={clsx(styles.profileContainer)}
+                className={clsx(styles.ProfileContainer)}
                 style={{ backgroundImage: `url(${bgUser})` }}
                 onClick={() => setShowPopperProfile(!showPopperProfile)}
               />
