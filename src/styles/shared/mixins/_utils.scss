@@ -1,0 +1,44 @@
+@mixin flexbox($justify: flex-start, $align: flex-start) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin y-centered() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin x-centered() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin centered($horizontal: 50%, $vertical: 50%) {
+  position: absolute;
+  left: $horizontal;
+  top: $vertical;
+  transform: translate(-$horizontal, -$vertical);
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin background-img($position: center, $size: cover) {
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: $size;
+}
+
+@mixin box-shadow($top, $left, $blur, $color) {
+  -webkit-box-shadow: $top $left $blur $color;
+  -moz-box-shadow: $top $left $blur $color;
+  box-shadow: $top $left $blur $color;
+}

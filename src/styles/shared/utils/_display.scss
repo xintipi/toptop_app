@@ -1,0 +1,16 @@
+$positions: (
+  'block': block,
+  'inline': inline,
+  'inline-block': inline-block,
+  'table': table,
+  'flex': flex,
+  'inline-flex': inline-flex,
+  'grid': grid,
+  'none': none,
+);
+
+@each $key, $val in $positions {
+  .d-#{$key} {
+    display: $val;
+  }
+}

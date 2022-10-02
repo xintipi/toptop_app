@@ -1,0 +1,51 @@
+$margin-utils: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '5': 5px,
+  '6': 6px,
+  '7': 7px,
+  '8': 8px,
+  '9': 9px,
+  '10': 10px,
+  '11': 11px,
+  '12': 12px,
+  '13': 13px,
+  '14': 14px,
+  '15': 15px,
+  '16': 16px,
+  '24': 24px,
+  '60': 60px,
+  'n3': -3px,
+  'n12': -12px,
+  'n16': -16px,
+);
+
+@each $key, $val in $margin-utils {
+  .ml-#{$key} {
+    margin-left: $val;
+  }
+
+  .mr-#{$key} {
+    margin-right: $val;
+  }
+
+  .mt-#{$key} {
+    margin-top: $val;
+  }
+
+  .mb-#{$key} {
+    margin-bottom: $val;
+  }
+
+  .mx-#{$key} {
+    margin-left: $val;
+    margin-right: $val;
+  }
+
+  .my-#{$key} {
+    margin-top: $val;
+    margin-bottom: $val;
+  }
+}

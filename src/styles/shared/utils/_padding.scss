@@ -1,0 +1,50 @@
+$padding-utils: (
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '5': 5px,
+  '6': 6px,
+  '7': 7px,
+  '8': 8px,
+  '9': 9px,
+  '10': 10px,
+  '11': 11px,
+  '12': 12px,
+  '13': 13px,
+  '14': 14px,
+  '15': 15px,
+  '16': 16px,
+);
+
+@each $key, $val in $padding-utils {
+  .pl-#{$key} {
+    padding-left: $val;
+  }
+
+  .pr-#{$key} {
+    padding-right: $val;
+  }
+
+  .pt-#{$key} {
+    padding-top: $val;
+  }
+
+  .pb-#{$key} {
+    padding-bottom: $val;
+  }
+
+  .px-#{$key} {
+    padding-left: $val;
+    padding-right: $val;
+  }
+
+  .py#{$key} {
+    padding-bottom: $val;
+    padding-top: $val;
+  }
+
+  p-#{$key} {
+    padding: $val;
+  }
+}

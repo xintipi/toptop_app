@@ -9,7 +9,16 @@ function Default({ children }: { children: ReactNode }) {
   return (
     <Fragment>
       <Header />
-      <div className={clsx(styles.BodyContainer, 'container')}>
+      <div
+        className={clsx(
+          styles.BodyContainer,
+          'd-flex',
+          'align-self-center',
+          'justify-content-between',
+          'mt-60',
+          'container',
+        )}
+      >
         <Sidebar />
         <div className={clsx('main-container')}>
           <div>{children}</div>

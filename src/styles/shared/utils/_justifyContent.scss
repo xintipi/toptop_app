@@ -1,0 +1,13 @@
+$justify-content-utils: (
+  'start': start,
+  'end': end,
+  'center': center,
+  'between': space-between,
+  'around': around,
+);
+
+@each $key, $val in $justify-content-utils {
+  .justify-content-#{$key} {
+    justify-content: $val;
+  }
+}

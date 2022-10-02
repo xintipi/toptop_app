@@ -6,6 +6,8 @@ const TRANSLATIONS_VI = {
   view_setting: 'Cài đặt',
   view_language: 'Tiếng Việt',
   view_logout: 'Đăng xuất',
+  view_messages: 'Tin nhắn',
+  view_inbox: 'Hộp thư',
   lang_title: 'Ngôn ngữ',
   login: 'Đăng nhập',
   view_result: 'Xem tất cả kết quả dành cho "{{ result }}"',

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+// variables
+@import './shared/variables';
+
+// mixins
+@import './shared/mixins';
+
+// utils
+@import './shared/utils';
+
+// base
+@import './base/base';
+
+// component
+@import './components/icon';

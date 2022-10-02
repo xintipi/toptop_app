@@ -1,0 +1,13 @@
+$align-self-utils: (
+  'start': start,
+  'end': end,
+  'center': center,
+  'baseline': baseline,
+  'stretch': stretch,
+);
+
+@each $key, $val in $align-self-utils {
+  .align-self-#{$key} {
+    align-self: $val;
+  }
+}

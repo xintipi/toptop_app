@@ -1,0 +1,13 @@
+$align-item-utils: (
+  'center': center,
+  'start': start,
+  'end': end,
+  'baseline': baseline,
+  'stretch': stretch,
+);
+
+@each $key, $val in $align-item-utils {
+  .align-items-#{$key} {
+    align-items: $val;
+  }
+}

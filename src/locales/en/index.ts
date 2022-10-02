@@ -6,6 +6,8 @@ const TRANSLATIONS_EN = {
   view_setting: 'Setting',
   view_language: 'English',
   view_logout: 'Log out',
+  view_messages: 'messages',
+  view_inbox: 'inbox',
   lang_title: 'Language',
   login: 'Login',
   view_result: 'View all results for "{{ result }}"',

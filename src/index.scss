@@ -1,37 +1,10 @@
+@import '@/styles/shared/variables';
+
 :root {
-  --primaryColor: 22, 24, 35;
-  --primaryBackground: 255, 255, 255;
-  --greyColor: 254, 44, 85;
-  --greyBackground: 136, 136, 136;
-  --transparent: transparent;
-  --fontFamilyHeading: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
-  --fontFamilyParagraph: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: var(--fontFamilyParagraph);
-  font-size: 14px;
-  color: rgb(var(--primaryColor));
-  background-color: var(--primaryBackground);
-  overscroll-behavior: contain;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-
-  a {
-    color: rgb(var(--primaryColor));
-    -webkit-transition: color 250ms;
-    transition: color 250ms;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  --primaryColor: #{$rgb-color-primary};
+  --redColor: #{$rgb-color-red};
+  --primaryBackground: #{$rgb-background-primary};
+  --greyBackground: #{$rgb-background-grey};
+  --fontFamilyHeading: #{$font-family-heading};
+  --fontFamilyParagraph: #{$font-family-paragrap};
 }

@@ -1,0 +1,11 @@
+$font-weight-utils: (
+  'light': 400,
+  'normal': 500,
+  'bold': 600,
+);
+
+@each $key, $val in $font-weight-utils {
+  .fw-#{$key} {
+    font-weight: $val;
+  }
+}

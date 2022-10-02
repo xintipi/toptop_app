@@ -1,5 +1,6 @@
-import './index.scss';
 import './locales/i18n';
+import './styles/main.scss';
+import './index.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';

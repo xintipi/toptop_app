@@ -1,5 +1,3 @@
-import './App.scss';
-
 import React, { Fragment } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
