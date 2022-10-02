@@ -39,7 +39,7 @@ $padding-utils: (
     padding-right: $val;
   }
 
-  .py#{$key} {
+  .py-#{$key} {
     padding-bottom: $val;
     padding-top: $val;
   }
