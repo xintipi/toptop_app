@@ -40,26 +40,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 2000,
   },
   define: { __APP_INFO__: JSON.stringify(__APP_INFO__) },
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-        additionalData: '@root-entry-name: default;',
-      },
-    },
-    postcss: {
-      plugins: [
-        {
-          postcssPlugin: 'internal:charset-removal',
-          AtRule: {
-            charset: (atRule) => {
-              if (atRule.name === 'charset') atRule.remove();
-            },
-          },
-        },
-      ],
-    },
-  },
   plugins: [svgr(), react()],
   test: {
     include: ['src/**/*.{test,spec}.{jsx,tsx}'],
