@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react';
 import TippyHeadless from '@tippyjs/react/headless';
 import clsx from 'clsx';
 import { TFunction } from 'i18next';
-import React, { ChangeEvent, Fragment, useRef, useState } from 'react';
+import React, { ChangeEvent, Fragment, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -24,9 +24,8 @@ import {
   VerifyBadge,
 } from '@/assets/icons';
 import bgUser from '@/assets/user.jpeg';
-import Modal from '@/components/General/Modal/Modal';
 import { Avatar } from '@/components/Styled/Avatar/StyledAvatar';
-import { Button } from '@/components/Styled/Button/StyledButton';
+import Button from '@/components/Styled/Button/StyledButton';
 import {
   IconArrow,
   IconInbox,
@@ -55,29 +54,34 @@ function Header() {
   const [userLogged] = useState<boolean>(false);
   const [stateModal, setStateModal] = useState<boolean>(false);
 
-  const handleLogin = () => {
+  const [test, setTest] = useState<string>('');
+
+  const handleLogin = useCallback(() => {
     setStateModal(true);
 
     searchParams.set('m', ModalEnum.Login);
     setSearchParams(searchParams);
-  };
+  }, [searchParams]);
 
-  const handleClickOut = () => {
+  const handleClickOut = useCallback(() => {
     setShowPopperProfile(false);
     setShowLang(false);
-  };
+  }, []);
 
   const handleClear = () => {
     setSearchInput('');
     inputRef.current?.focus();
   };
 
-  const onChangeLocale = (lang: string | number) => {
-    i18n.changeLanguage(lang as string).then((_r: TFunction) => {
-      setSearchParams({ lang: i18n.language });
-      handleClickOut();
-    });
-  };
+  const onChangeLocale = useCallback(
+    (lang: string | number) => {
+      i18n.changeLanguage(lang as string).then((_r: TFunction) => {
+        setSearchParams({ lang: i18n.language });
+        handleClickOut();
+      });
+    },
+    [i18n],
+  );
 
   return (
     <header className={clsx(styles.Header, styles.FixedTop)}>
@@ -214,7 +218,7 @@ function Header() {
             </Fragment>
           ) : (
             <Fragment>
-              <Button onClick={handleLogin} danger ghost>
+              <Button onClick={handleLogin} className="ml-16" danger ghost>
                 {t('login')}
               </Button>
               {stateModal && <Login onClose={(open) => setStateModal(open)} />}

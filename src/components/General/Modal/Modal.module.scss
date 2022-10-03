@@ -41,6 +41,18 @@
       .PageWrapper {
         flex: 1 1 auto;
         overflow: auto;
+
+        .LoginContainer {
+          width: 375px;
+          margin: auto;
+          padding: unset;
+
+          .Title {
+            color: rgb(var(--primaryColor));
+            font-family: var(--fontFamilyHeading);
+            margin: 16px auto;
+          }
+        }
       }
 
       .Container {
@@ -53,6 +65,10 @@
 
         .Link {
           color: rgb(var(--redColor));
+
+          &:hover {
+            text-decoration: underline rgb(var(--redColor));
+          }
 
           .LinkText {
             line-height: 18px;

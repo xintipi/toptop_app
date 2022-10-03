@@ -13,6 +13,8 @@ const TRANSLATIONS_EN = {
   sign_up: 'Sign up',
   dont_have_account: 'Don’t have an account?',
   have_account: 'Already have an account?',
+  email_username: 'Email or Username',
+  password: 'Password',
   view_result: 'View all results for "{{ result }}"',
   date_format_one: '{{-date, YYYY/MM/DD}}',
   date_format_two: '{{date, DD-MM-YYYY}}',

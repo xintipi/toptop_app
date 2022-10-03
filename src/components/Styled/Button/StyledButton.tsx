@@ -1,4 +1,4 @@
-import { CSSProperties, Fragment, MouseEvent, ReactNode } from 'react';
+import React, { CSSProperties, Fragment, MouseEvent, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import variables from './variables';
@@ -9,6 +9,7 @@ type IProps = {
   style?: CSSProperties;
   className?: string;
   disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
   size?: 'sm' | 'md' | 'lg';
   danger?: boolean;
   ghost?: boolean;
@@ -16,7 +17,7 @@ type IProps = {
 };
 
 const ButtonComp = (props: IProps) => {
-  const { className, style, icon, children, disabled } = props;
+  const { type, className, style, icon, children, disabled } = props;
 
   const handleClick = (evt: MouseEvent<HTMLButtonElement>) => {
     if (disabled) return;
@@ -25,6 +26,7 @@ const ButtonComp = (props: IProps) => {
 
   return (
     <button
+      type={type}
       className={className}
       disabled={disabled}
       style={style}
@@ -34,6 +36,10 @@ const ButtonComp = (props: IProps) => {
       <span>{children}</span>
     </button>
   );
+};
+
+ButtonComp.defaultProps = {
+  type: 'button',
 };
 
 const backgroundColor = (props: Pick<IProps, 'ghost'>) => {
@@ -58,10 +64,10 @@ const color = (props: Pick<IProps, 'danger' | 'ghost'>) => {
 };
 
 const Button = styled(ButtonComp)`
+  width: 100%;
   min-width: 100px;
   line-height: 22px;
   padding: 6px 8px;
-  margin-left: 16px;
   border-radius: ${(props) => (!props.danger ? '2px' : '4px')};
   display: flex;
   align-items: center;
@@ -73,8 +79,10 @@ const Button = styled(ButtonComp)`
   color: ${(props) => color(props)};
 
   &:disabled {
+    border: none;
+    color: rgba(var(--primaryColor), 0.34);
+    background-color: rgba(var(--primaryColor), 0.06);
     pointer-events: none;
-    opacity: 0.5;
   }
 
   &:hover {
@@ -97,4 +105,4 @@ const Button = styled(ButtonComp)`
   }
 `;
 
-export { Button };
+export default React.memo(Button);

@@ -13,6 +13,8 @@ const TRANSLATIONS_VI = {
   sign_up: 'Đăng ký',
   dont_have_account: 'Bạn không có tài khoản?',
   have_account: 'Bạn đã có tài khoản?',
+  email_username: 'Email hoặc Tiktok ID',
+  password: 'Mật khẩu',
   view_result: 'Xem tất cả kết quả dành cho "{{ result }}"',
   date_format_one: '{{-date, DD/MM/YYYY}}',
   date_format_two: '{{date, DD-MM-YYYY}}',

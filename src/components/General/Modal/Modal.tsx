@@ -17,7 +17,7 @@ export interface IProps {
   onClose: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-export default function Modal(props: IProps) {
+function Modal(props: IProps) {
   const [searchParams] = useSearchParams();
 
   return createPortal(
@@ -29,8 +29,10 @@ export default function Modal(props: IProps) {
         </div>
         <div className={clsx(styles.ModalContent, 'd-flex', 'pt-48')}>
           <div className={clsx(styles.PageWrapper)}>
-            <div className={styles.LoginContainer}>
-              <div className={styles.Title}>{props.title}</div>
+            <div className={clsx(styles.LoginContainer)}>
+              <div className={clsx(styles.Title, 'fs-32', 'text-center', 'fw-bold')}>
+                {props.title}
+              </div>
               {props.render}
             </div>
           </div>
@@ -57,3 +59,5 @@ export default function Modal(props: IProps) {
     document.querySelector('#modal') as HTMLDivElement,
   );
 }
+
+export default React.memo(Modal);

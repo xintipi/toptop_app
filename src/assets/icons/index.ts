@@ -9,6 +9,8 @@ export { default as Language } from './language.svg?component';
 export { default as Logout } from './logout.svg?component';
 export { default as Message } from './message.svg?component';
 export { default as Profile } from './profile.svg?component';
+export { default as PasswordInvisible } from './pw_invisible.svg?component';
+export { default as PasswordVisible } from './pw_visible.svg?component';
 export { default as SearchButton } from './search-button.svg?component';
 export { default as Setting } from './setting.svg?component';
 export { default as Upload } from './upload.svg?component';
