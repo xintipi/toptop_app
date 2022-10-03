@@ -24,6 +24,7 @@ import {
   VerifyBadge,
 } from '@/assets/icons';
 import bgUser from '@/assets/user.jpeg';
+import Modal from '@/components/General/Modal/Modal';
 import { Avatar } from '@/components/Styled/Avatar/StyledAvatar';
 import { Button } from '@/components/Styled/Button/StyledButton';
 import {
@@ -35,14 +36,15 @@ import {
 import { Locales } from '@/components/Styled/Locale/StyledLocale';
 import { PopperProfile, PopperSearch } from '@/components/Styled/Popper/StyledPopper';
 import searchData from '@/dummy/search.json';
-import { LanguagesEnum } from '@/enums';
+import { LanguagesEnum, ModalEnum } from '@/enums';
+import Login from '@/layouts/Header/components/Login';
 import { i18n } from '@/locales';
 
 import styles from './Header.module.scss';
 
 function Header() {
   const navigate = useNavigate();
-  const [_searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
 
   const [searchInput, setSearchInput] = useState<string>('');
@@ -51,6 +53,14 @@ function Header() {
   const [searchResult, setSearchResult] = useState<any>([1, 2, 3]);
   const [showLang, setShowLang] = useState<boolean>(false);
   const [userLogged] = useState<boolean>(false);
+  const [stateModal, setStateModal] = useState<boolean>(false);
+
+  const handleLogin = () => {
+    setStateModal(true);
+
+    searchParams.set('m', ModalEnum.Login);
+    setSearchParams(searchParams);
+  };
 
   const handleClickOut = () => {
     setShowPopperProfile(false);
@@ -203,9 +213,12 @@ function Header() {
               </div>
             </Fragment>
           ) : (
-            <Button onClick={() => navigate('/login')} danger ghost>
-              {t('login')}
-            </Button>
+            <Fragment>
+              <Button onClick={handleLogin} danger ghost>
+                {t('login')}
+              </Button>
+              {stateModal && <Login onClose={(open) => setStateModal(open)} />}
+            </Fragment>
           )}
 
           <TippyHeadless

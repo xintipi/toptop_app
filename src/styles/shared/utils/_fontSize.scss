@@ -1,6 +1,7 @@
 $font-size-utils: (
   '12': 12px,
   '14': 14px,
+  '15': 15px,
   '16': 16px,
 );
 @each $key, $val in $font-size-utils {

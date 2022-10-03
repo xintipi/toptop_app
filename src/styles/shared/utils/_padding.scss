@@ -15,6 +15,7 @@ $padding-utils: (
   '14': 14px,
   '15': 15px,
   '16': 16px,
+  '48': 48px,
 );
 
 @each $key, $val in $padding-utils {

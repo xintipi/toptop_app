@@ -23,7 +23,7 @@
   transform: translate(-$horizontal, -$vertical);
 }
 
-@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+@mixin position($position, $top: unset, $right: unset, $bottom: unset, $left: unset) {
   position: $position;
   top: $top;
   right: $right;
