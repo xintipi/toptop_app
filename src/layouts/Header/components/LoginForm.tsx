@@ -10,6 +10,11 @@ interface ILoginForm {
   password: string;
 }
 
+const components = {
+  'password': <PasswordInvisible />,
+  'text': <PasswordVisible />
+}
+
 function LoginForm() {
   const { t } = useTranslation();
 
@@ -67,7 +72,7 @@ function LoginForm() {
         type={type}
         label={t('password')}
         placeholder={t('password')}
-        icon={type === 'password' ? <PasswordInvisible /> : <PasswordVisible />}
+        icon={components[type as keyof typeof components]}
         value={loginForm.password}
         onChange={onHandleChangePassword}
         onIconClick={onHandleIcon}
