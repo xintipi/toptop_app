@@ -36,7 +36,7 @@ import { Locales } from '@/components/Styled/Locale/StyledLocale';
 import { PopperProfile, PopperSearch } from '@/components/Styled/Popper/StyledPopper';
 import searchData from '@/dummy/search.json';
 import { LanguagesEnum, ModalEnum } from '@/enums';
-import Login from '@/layouts/Header/components/Login';
+import Wrapper from '@/layouts/Header/components/Wrapper';
 import { i18n } from '@/locales';
 
 import styles from './Header.module.scss';
@@ -221,7 +221,7 @@ function Header() {
               <Button onClick={handleLogin} className="ml-16" danger ghost>
                 {t('login')}
               </Button>
-              {stateModal && <Login onClose={(open) => setStateModal(open)} />}
+              {stateModal && <Wrapper onClose={(open) => setStateModal(open)} />}
             </Fragment>
           )}
 
