@@ -5,7 +5,9 @@ import { Header, Sidebar } from '@/layouts';
 
 import styles from './Default.module.scss';
 
-function Default({ children }: { children: ReactNode }) {
+function Default(props: { children: ReactNode }) {
+  const { children } = props;
+
   return (
     <Fragment>
       <Header />

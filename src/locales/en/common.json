@@ -1,0 +1,24 @@
+{
+  "ph_search_input": "Search accounts and videos",
+  "accounts": "Accounts",
+  "upload": "Upload",
+
+  "view_profile": "View profile",
+  "view_setting": "Setting",
+  "view_language": "English",
+  "view_logout": "Log out",
+  "view_messages": "messages",
+  "view_inbox": "inbox",
+  "view_result": "View all results for \"{{ result }}\"",
+
+  "lang_title": "Language",
+  "login": "Log in",
+  "sign_up": "Sign up",
+  "dont_have_account": "Don’t have an account?",
+  "have_account": "Already have an account?",
+  "email_username": "Email or Username",
+  "password": "Password",
+  "date_format_one": "{{-date, YYYY/MM/DD}}",
+  "date_format_two": "{{date, DD-MM-YYYY}}",
+  "key_with_count": "Anne has bought {{ count }} book"
+}

@@ -1,4 +1,11 @@
-import React, { ChangeEvent, MouseEvent, ReactNode, useState } from 'react';
+import clsx from 'clsx';
+import React, {
+  ChangeEvent,
+  FocusEventHandler,
+  MouseEvent,
+  ReactNode,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 
 interface IProps {
@@ -6,40 +13,60 @@ interface IProps {
   name: string;
   label?: string;
   type?: string;
+  errors?: any;
+  touched?: any;
   value: string;
   placeholder: string;
   icon?: ReactNode;
+  onBlur?: FocusEventHandler<HTMLInputElement> | undefined;
   onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
   onIconClick?: (evt: MouseEvent<HTMLElement>) => void;
 }
 
 const InputComp = (props: IProps) => {
-  const [value, setValue] = useState<string>(props.value || '');
+  const {
+    className,
+    name,
+    label,
+    type,
+    errors,
+    touched,
+    value,
+    placeholder,
+    icon,
+    onBlur,
+    onIconClick,
+    onChange,
+  } = props;
+  const [newValue, setValue] = useState<string>(value || '');
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     setValue(evt.target.value);
-    props.onChange(evt);
+    onChange(evt);
   };
 
   return (
-    <div className={`${props.className} position-relative mb-9`}>
-      {props.label && (
-        <label htmlFor={props.name} className="fw-bold fs-14 mb-5 d-block">
-          {props.label}
-        </label>
-      )}
+    <div className={`${className} position-relative mb-9`}>
+      {label && <label className="fw-bold fs-14 mb-5 d-block">{label}</label>}
       <div className="position-relative">
         <input
-          className="fs-16"
-          type={props.type}
-          placeholder={props.placeholder}
-          name={props.name}
-          value={value}
+          className={clsx({
+            'fs-16': true,
+            'input-error': errors[name] && touched[name],
+          })}
+          type={type}
+          placeholder={placeholder}
+          name={name}
+          value={newValue}
           onChange={handleChange}
+          onBlur={onBlur}
         />
         <div className="icon-container">
-          {props.icon && <i onClick={props.onIconClick}>{props.icon}</i>}
+          {icon && <i onClick={onIconClick}>{icon}</i>}
         </div>
+        {errors[name] && touched[name] && (
+          <div className="input-feedback">{errors[name]}</div>
+        )}
       </div>
     </div>
   );
@@ -64,12 +91,17 @@ const Input = styled(InputComp)`
     outline: none;
     height: 44px;
     width: 100%;
-    padding-inline-end: unset;
+    padding-inline-end: 12px;
+
+    &.input-error {
+      border-color: rgb(var(--redColor));
+    }
 
     &::placeholder {
       opacity: 0.3;
     }
   }
+
   .icon-container {
     right: 0;
     display: flex;
@@ -84,6 +116,11 @@ const Input = styled(InputComp)`
       cursor: pointer;
       font-size: 20px;
     }
+  }
+
+  .input-feedback {
+    color: rgb(var(--redColor));
+    margin-top: 0.25rem;
   }
 `;
 

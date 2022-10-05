@@ -4,11 +4,21 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
 import { LocalesEnum } from '@/enums';
-import { TRANSLATIONS_EN, TRANSLATIONS_VI } from '@/locales/index';
+
+import commonEn from './en/common.json';
+import enRules from './en/en_rules.json';
+import commonVi from './vi/common.json';
+import viRules from './vi/vi_rules.json';
 
 const resources: Resource = {
-  en: { translation: TRANSLATIONS_EN },
-  vi: { translation: TRANSLATIONS_VI },
+  en: {
+    common: commonEn,
+    rules: enRules,
+  },
+  vi: {
+    common: commonVi,
+    rules: viRules,
+  },
 };
 
 i18n
@@ -18,6 +28,8 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: LocalesEnum.En,
+    // Set default namespace
+    defaultNS: 'common',
     resources,
     interpolation: {
       format: function (value, format: string | undefined) {

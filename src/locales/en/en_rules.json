@@ -1,0 +1,26 @@
+{
+  "code": "en",
+  "messages": {
+    "alpha": "The {{field}} field may only contain alphabetic characters",
+    "alpha_num": "The {{field}} field may only contain alpha-numeric characters",
+    "alpha_dash": "The {{field}} field may contain alpha-numeric characters as well as dashes and underscores",
+    "alpha_spaces": "The {{field}} field may only contain alphabetic characters as well as spaces",
+    "confirmed": "The {{field}} field confirmation does not match",
+    "dimensions": "The {{field}} field must be {width} pixels by 1:{height} pixels",
+    "email": "The {{field}} field must be a valid email",
+    "excluded": "The {{field}} field is not a valid value",
+    "ext": "The {{field}} field is not a valid file",
+    "image": "The {{field}} field must be an image",
+    "integer": "The {{field}} field must be an integer",
+    "length": "The {{field}} field must be {{length}} long",
+    "max": "The {{field}} field may not be greater than {{length}} characters",
+    "mimes": "The {{field}} field must have a valid file type",
+    "min": "The {{field}} field must be at least {{length}} characters",
+    "numeric": "The {{field}} field may only contain numeric characters",
+    "regex": "The {{field}} field format is invalid",
+    "required": "The {{field}} field is required",
+    "size": "The {{field}} field size must be less than {{size}}KB",
+    "url": "The {{field}} field is not a valid URL",
+    "regex_password": "Only alphanumerical characters including uppercase letters, lowercase letters, and symbols are valid"
+  }
+}

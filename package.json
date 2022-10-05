@@ -22,11 +22,13 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@loadable/component": "^5.15.2",
     "@reduxjs/toolkit": "^1.8.5",
     "@tippyjs/react": "^4.2.6",
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.5",
+    "formik": "^2.2.9",
     "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
     "js-cookie": "^3.0.1",
@@ -36,7 +38,9 @@
     "react-i18next": "^11.18.6",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.4.1",
-    "styled-components": "^5.3.5"
+    "react-router-guards": "^1.0.2",
+    "styled-components": "^5.3.5",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
-import Modal from '@/components/General/Modal/Modal';
+import { Modal } from '@/components/General';
 import { ModalEnum } from '@/enums';
 
 import LoginForm from './LoginForm';

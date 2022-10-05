@@ -11,6 +11,7 @@ export interface IProps {
   title: string;
   bottomText: string;
   linkText: string;
+  children?: ReactNode;
   render: ReactNode;
   onSwitch: (event: string) => void;
   onBack: (event: MouseEvent<HTMLDivElement>) => void;
@@ -35,6 +36,7 @@ function Modal(props: IProps) {
               </div>
               {props.render}
             </div>
+            {props.children}
           </div>
           <div className={clsx(styles.Container, 'fs-15')}>
             <div>{props.bottomText}</div>
