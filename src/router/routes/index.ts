@@ -17,11 +17,11 @@ export const RootRoute: AppRouteRecordRaw = {
   redirect: '/home',
 };
 
-export const exceptionRoute: AppRouteRecordRaw = {
+export const ExceptionRoute: AppRouteRecordRaw = {
   path: '*',
   name: '*',
   redirect: '/404',
 };
 
 // Basic routing without permission
-export const basicRoutes = [RootRoute, exceptionRoute, ...routeModuleList];
+export const basicRoutes = [RootRoute, ExceptionRoute, ...routeModuleList];
