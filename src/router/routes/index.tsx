@@ -1,5 +1,6 @@
 import { forEach, keys } from 'lodash-es';
 import { Navigate, RouteObject } from 'react-router-dom';
+import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const modules = import.meta.globEager('./modules/**/*.tsx') as any;
 const routeModuleList: RouteObject[] = [];
@@ -10,8 +11,6 @@ forEach(keys(modules), (key) => {
   routeModuleList.push(...modList);
 });
 
-console.log(routeModuleList);
-
 export const rootRoute: RouteObject = {
   path: '/',
   element: <Navigate to="/home" replace />,
@@ -19,7 +18,7 @@ export const rootRoute: RouteObject = {
 
 export const exceptionRoute: RouteObject = {
   path: '*',
-  element: <Navigate to="/404" replace />,
+  element: <WrapperRouteComponent pageNotFound />,
 };
 
 // Basic routing without permission

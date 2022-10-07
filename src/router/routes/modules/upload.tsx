@@ -2,12 +2,12 @@ import { RouteObject } from 'react-router-dom';
 
 import { Upload } from '@/pages';
 import { DefaultLayoutNoSidebar } from '@/router/constant';
-import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
+import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const upload: RouteObject = {
   path: '/upload',
   element: (
-    <WrappeRouteComponent
+    <WrapperRouteComponent
       title="title:upload"
       auth
       guard="auth"

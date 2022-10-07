@@ -2,12 +2,12 @@ import { RouteObject } from 'react-router-dom';
 
 import { Setting } from '@/pages';
 import { DefaultLayoutNoSidebar } from '@/router/constant';
-import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
+import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const setting: RouteObject = {
   path: '/setting',
   element: (
-    <WrappeRouteComponent
+    <WrapperRouteComponent
       title="title:setting"
       auth
       guard="auth"

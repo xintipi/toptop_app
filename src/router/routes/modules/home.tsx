@@ -2,12 +2,12 @@ import { RouteObject } from 'react-router-dom';
 
 import { Home } from '@/pages';
 import { DefaulLayoutHasSidebar } from '@/router/constant';
-import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
+import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const home: RouteObject = {
   path: '/home',
   element: (
-    <WrappeRouteComponent
+    <WrapperRouteComponent
       title="title:home"
       element={
         <DefaulLayoutHasSidebar>

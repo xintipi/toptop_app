@@ -3,12 +3,12 @@ import { RouteObject } from 'react-router-dom';
 import { Message } from '@/pages';
 import { DefaultLayoutNoSidebar } from '@/router/constant';
 import AuthGuard from '@/router/guard/AuthGuard';
-import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
+import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const message: RouteObject = {
   path: '/message',
   element: (
-    <WrappeRouteComponent
+    <WrapperRouteComponent
       title="title:message"
       auth
       guard="auth"

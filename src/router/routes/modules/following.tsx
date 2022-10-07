@@ -2,12 +2,12 @@ import { RouteObject } from 'react-router-dom';
 
 import { Following } from '@/pages';
 import { DefaulLayoutHasSidebar } from '@/router/constant';
-import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
+import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const following: RouteObject = {
   path: '/following',
   element: (
-    <WrappeRouteComponent
+    <WrapperRouteComponent
       title="title:following"
       auth
       guard="auth"
