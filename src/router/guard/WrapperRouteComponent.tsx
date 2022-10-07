@@ -1,10 +1,10 @@
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouteProps } from 'react-router';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import AuthGuard from '@/router/guard/AuthGuard';
 import LoginGuard from '@/router/guard/LoginGuard';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 export type WrapperRouteProps = RouteProps & {
   /** document title locale */

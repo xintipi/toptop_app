@@ -1,5 +1,6 @@
 import { forEach, keys } from 'lodash-es';
 import { Navigate, RouteObject } from 'react-router-dom';
+
 import WrapperRouteComponent from '@/router/guard/WrapperRouteComponent';
 
 const modules = import.meta.globEager('./modules/**/*.tsx') as any;
