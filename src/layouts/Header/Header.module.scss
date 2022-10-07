@@ -88,6 +88,7 @@
         @include background-img(center, cover);
         border-radius: 50%;
         cursor: pointer;
+        flex-shrink: 0;
       }
 
       .LogoutEntrance {

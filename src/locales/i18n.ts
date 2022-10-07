@@ -6,18 +6,22 @@ import { initReactI18next } from 'react-i18next';
 import { LocalesEnum } from '@/enums';
 
 import commonEn from './en/common.json';
-import enRules from './en/en_rules.json';
+import rulesEn from './en/en_rules.json';
+import titleEn from './en/title.json';
 import commonVi from './vi/common.json';
-import viRules from './vi/vi_rules.json';
+import titleVi from './vi/title.json';
+import rulesVi from './vi/vi_rules.json';
 
 const resources: Resource = {
   en: {
     common: commonEn,
-    rules: enRules,
+    rules: rulesEn,
+    title: titleEn,
   },
   vi: {
     common: commonVi,
-    rules: viRules,
+    rules: rulesVi,
+    title: titleVi,
   },
 };
 

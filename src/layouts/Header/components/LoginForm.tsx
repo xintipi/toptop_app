@@ -1,19 +1,27 @@
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
 import { PasswordInvisible, PasswordVisible } from '@/assets/icons';
 import Button from '@/components/Styled/Button/StyledButton';
 import Input from '@/components/Styled/Input/StyledInput';
 import yup from '@/config/yup.validation';
+import { onLogIn } from '@/store/modules/auth/slice';
 
 const components = {
   password: <PasswordInvisible />,
   text: <PasswordVisible />,
 };
 
+interface ILoginForm {
+  username: string;
+  password: string;
+}
+
 function LoginForm() {
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
 
   const [type, setType] = useState<string>('password');
 
@@ -39,12 +47,18 @@ function LoginForm() {
     }
   }, [type]);
 
+  const onSubmit = (values: ILoginForm, formikHelpers: FormikHelpers<ILoginForm>) => {
+    if (Object.keys(values).length) {
+      dispatch(onLogIn(true));
+    }
+
+    formikHelpers.setSubmitting(false);
+  };
+
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(false);
-      }}
+      onSubmit={(values, formikHelpers) => onSubmit(values, formikHelpers)}
       validationSchema={validationSchema}
     >
       {(props) => {

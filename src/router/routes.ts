@@ -1,7 +1,12 @@
-import { AppRouteRecordRaw } from '@/router/types';
+import { FC } from 'react';
+import { RouteObject, useRoutes } from 'react-router-dom';
 
 import { basicRoutes } from './routes/index';
 
-const routes: AppRouteRecordRaw[] = [...basicRoutes];
+const routeList: RouteObject[] = [...basicRoutes];
 
-export default routes;
+const RenderRouter: FC = () => {
+  return useRoutes(routeList);
+};
+
+export default RenderRouter;

@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { TFunction } from 'i18next';
 import React, { ChangeEvent, Fragment, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import {
@@ -38,6 +39,7 @@ import searchData from '@/dummy/search.json';
 import { LanguagesEnum, ModalEnum } from '@/enums';
 import Wrapper from '@/layouts/Header/components/Wrapper';
 import { i18n } from '@/locales';
+import { selectLogged } from '@/store/modules/auth/slice';
 
 import styles from './Header.module.scss';
 
@@ -51,10 +53,9 @@ function Header() {
   const [showPopperProfile, setShowPopperProfile] = useState<boolean>(false);
   const [searchResult, setSearchResult] = useState<any>([1, 2, 3]);
   const [showLang, setShowLang] = useState<boolean>(false);
-  const [userLogged] = useState<boolean>(false);
   const [stateModal, setStateModal] = useState<boolean>(false);
 
-  const [test, setTest] = useState<string>('');
+  const userLogged = useSelector(selectLogged);
 
   const handleLogin = useCallback(() => {
     setStateModal(true);
