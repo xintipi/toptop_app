@@ -2,14 +2,15 @@ import { RouteObject } from 'react-router-dom';
 
 import { Profile } from '@/pages';
 import { DefaultLayoutNoSidebar } from '@/router/constant';
-import WrapperRouteAuth from '@/router/guard/WrapperRouteAuth';
+import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
 
 const profile: RouteObject = {
   path: '/:profileId',
   element: (
-    <WrapperRouteAuth
+    <WrappeRouteComponent
       title="title:profile"
       auth
+      guard="auth"
       element={
         <DefaultLayoutNoSidebar>
           <Profile />

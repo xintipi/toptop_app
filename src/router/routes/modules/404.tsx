@@ -2,19 +2,19 @@ import { RouteObject } from 'react-router-dom';
 
 import { PageNotFound } from '@/pages';
 import { DefaultLayoutNoSidebar } from '@/router/constant';
-import WrapperRouteAuth from '@/router/guard/WrapperRouteAuth';
+import WrappeRouteComponent from '@/router/guard/WrappeRouteComponent';
 
 const pageNotFound: RouteObject = {
   path: '/404',
   element: (
-    <WrapperRouteAuth
+    <WrappeRouteComponent
       title="title:404"
       element={
         <DefaultLayoutNoSidebar>
           <PageNotFound />
         </DefaultLayoutNoSidebar>
       }
-    ></WrapperRouteAuth>
+    ></WrappeRouteComponent>
   ),
 };
 
